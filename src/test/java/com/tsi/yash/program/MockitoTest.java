@@ -1,7 +1,7 @@
 package com.tsi.yash.program;
 
 import com.tsi.yash.program.model.Actor;
-import com.tsi.yash.program.repositories.ActorRepository;
+import com.tsi.yash.program.repositories.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -23,11 +23,21 @@ public class MockitoTest {
 
     @Mock
     private ActorRepository actorRepository;
+    @Mock
+    private FilmActorRepository filmActorRepository;
+    @Mock
+    private FilmRepository filmRepository;
+    @Mock
+    private FilmCategoryRepository filmCategoryRepository;
+    @Mock
+    private CategoryRepository categoryRepository;
+    @Mock
+    private LanguageRepository languageRepository;
 
 
     @BeforeEach
     void setUp(){
-        myFirstMicroserviceApplication = new MyFirstMicroserviceApplication(actorRepository);
+        myFirstMicroserviceApplication = new MyFirstMicroserviceApplication(actorRepository, filmActorRepository, filmRepository,filmCategoryRepository, categoryRepository, languageRepository);
     }
 
     @Test
@@ -49,8 +59,6 @@ public class MockitoTest {
 
         Assertions.assertEquals(ResponseEntity.ok(addActor), actual);
         verify(actorRepository).findById(addActor.getActor_id());
-
-
 
     }
 

@@ -1,7 +1,7 @@
 package com.tsi.yash.program.repositories;
 
-import com.tsi.yash.program.model.Film_actor;
+import com.tsi.yash.program.model.FilmActor;
 import org.springframework.data.repository.CrudRepository;
 
-public interface FilmActorRepository extends CrudRepository<Film_actor, Integer> {
+public interface FilmActorRepository extends CrudRepository<FilmActor, Integer> {
 }

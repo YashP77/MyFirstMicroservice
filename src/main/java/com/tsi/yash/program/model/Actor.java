@@ -1,12 +1,8 @@
 package com.tsi.yash.program.model;
 
-import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.LastModifiedDate;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
@@ -16,13 +12,12 @@ public class Actor {
     //Attributes
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     private Integer actor_id;
-    private String first_name;
-    private String last_name;
+    @Basic private String first_name;
+    @Basic private String last_name;
 
     @LastModifiedDate
-    private LocalDateTime lastUpdate;
+    @Basic private LocalDateTime lastUpdate;
 
     //Constructors
     public Actor(){
