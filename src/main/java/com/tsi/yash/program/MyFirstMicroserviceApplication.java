@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
+import java.util.Optional;
 
 @SpringBootApplication
 @RestController
@@ -49,11 +50,13 @@ public class MyFirstMicroserviceApplication {
 
 
 
-	/*
+	/* *
 	*
 	* Actor crud operations
 	*
 	* */
+
+	String errorMsg = "Actor does not exist with ID: ";
 
 	@GetMapping("/allActors")
 	public @ResponseBody
@@ -62,9 +65,9 @@ public class MyFirstMicroserviceApplication {
 	}
 
 	@GetMapping("/getActor")
-	public ResponseEntity<Actor> getActor(@RequestParam Integer id){
-		Actor actor = actorRepository.findById(id)
-				.orElseThrow(() -> new ResourceNotFoundException("Actor does not exist with ID: " + id));
+	public ResponseEntity<Actor> getActor(@RequestParam int actor_id){
+		Actor actor = actorRepository.findById(actor_id)
+				.orElseThrow(() -> new ResourceNotFoundException(errorMsg + actor_id));
 		return ResponseEntity.ok(actor);
 	}
 
@@ -81,11 +84,10 @@ public class MyFirstMicroserviceApplication {
 	@PutMapping("/updateActor")
 	public ResponseEntity<Actor> updateActor(@RequestParam Integer id, String firstName, String lastName){
 		Actor updateActor = actorRepository.findById(id)
-				.orElseThrow(() -> new ResourceNotFoundException("Actor not exist with id: " + id));
+				.orElseThrow(() -> new ResourceNotFoundException(errorMsg + id));
 
 		updateActor.setFirst_name(firstName);
 		updateActor.setLast_name(lastName);
-		updateActor.setLastUpdate(LocalDateTime.now());
 
 		actorRepository.save(updateActor);
 
@@ -96,7 +98,7 @@ public class MyFirstMicroserviceApplication {
 	public ResponseEntity<HttpStatus> deleteActor(@RequestParam Integer id){
 
 		Actor actor = actorRepository.findById(id)
-				.orElseThrow(() -> new ResourceNotFoundException("Actor not exist with id: " + id));
+				.orElseThrow(() -> new ResourceNotFoundException(errorMsg + id));
 
 		actorRepository.delete(actor);
 
@@ -118,7 +120,7 @@ public class MyFirstMicroserviceApplication {
 	@GetMapping("/getFilmActor")
 	public ResponseEntity<FilmActor> getFilmActor(@RequestParam Integer actor_id){
 		FilmActor filmActor = filmActorRepository.findById(actor_id)
-				.orElseThrow(() -> new ResourceNotFoundException("Actor does not exist with ID: " + actor_id));
+				.orElseThrow(() -> new ResourceNotFoundException(errorMsg + actor_id));
 		return ResponseEntity.ok(filmActor);
 	}
 
@@ -134,7 +136,7 @@ public class MyFirstMicroserviceApplication {
 	@PutMapping("/updateFilmActor")
 	public ResponseEntity<FilmActor> updateFilmActor(@RequestParam Integer id, Integer actor_id, Integer film_id){
 		FilmActor updateFilmActor = filmActorRepository.findById(id)
-				.orElseThrow(() -> new ResourceNotFoundException("Actor not exist with id: " + id));
+				.orElseThrow(() -> new ResourceNotFoundException(errorMsg + id));
 
 		updateFilmActor.setActor_id(actor_id);
 		updateFilmActor.setFilm_id(film_id);
@@ -149,14 +151,14 @@ public class MyFirstMicroserviceApplication {
 	public ResponseEntity<HttpStatus> deleteFilmActor(@RequestParam Integer actor_id){
 
 		FilmActor filmActor = filmActorRepository.findById(actor_id)
-				.orElseThrow(() -> new ResourceNotFoundException("Actor not exist with id: " + actor_id));
+				.orElseThrow(() -> new ResourceNotFoundException(errorMsg + actor_id));
 
 		filmActorRepository.delete(filmActor);
 
 		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}
 
-	/* *
+	 /* *
 	 *
 	 * Film crud operations
 	 *
@@ -272,7 +274,7 @@ public class MyFirstMicroserviceApplication {
 		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}
 
-	/* *
+	 /* *
 	 *
 	 * Category crud operations
 	 *
@@ -325,7 +327,7 @@ public class MyFirstMicroserviceApplication {
 		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}
 
-	/* *
+	 /* *
 	 *
 	 * Language crud operations
 	 *
@@ -377,16 +379,4 @@ public class MyFirstMicroserviceApplication {
 
 		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}
-
-
-
-
-
-
-
-
-
-
-
-
 }

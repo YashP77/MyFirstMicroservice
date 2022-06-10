@@ -1,2 +1,5 @@
-com\tsi\yash\program\MyFirstMicroserviceApplicationTests.class
 com\tsi\yash\program\MockitoTest.class
+com\tsi\yash\program\model\ActorTest.class
+runCucumberTest.class
+com\tsi\yash\program\MyFirstMicroserviceApplicationTests.class
+com\tsi\yash\program\viewAllActorsStepDef.class

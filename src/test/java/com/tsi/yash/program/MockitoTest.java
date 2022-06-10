@@ -1,6 +1,7 @@
 package com.tsi.yash.program;
 
 import com.tsi.yash.program.model.Actor;
+import com.tsi.yash.program.model.FilmActor;
 import com.tsi.yash.program.repositories.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -39,6 +40,12 @@ public class MockitoTest {
     void setUp(){
         myFirstMicroserviceApplication = new MyFirstMicroserviceApplication(actorRepository, filmActorRepository, filmRepository,filmCategoryRepository, categoryRepository, languageRepository);
     }
+
+     /* *
+     *
+     * Actor crud operation tests
+     *
+     * */
 
     @Test
     public void getAllActors(){
@@ -112,5 +119,115 @@ public class MockitoTest {
         Assertions.assertEquals(expected, actual, "Actor not correctly deleted from DB");
 
     }
+
+
+     /* *
+     *
+     * FilmActor crud operation tests
+     *
+     * */
+
+    @Test
+    public void getAllFilmActors(){
+
+        myFirstMicroserviceApplication.getAllFilmActors();
+        verify(filmActorRepository).findAll();
+
+    }
+
+    @Test
+    public void getFilmActor(){
+
+        FilmActor addFilmActor = new FilmActor(1,1);
+
+        given(filmActorRepository.findById(addFilmActor.getActor_id())).willReturn(Optional.of(addFilmActor));
+
+        ResponseEntity<FilmActor> actual = myFirstMicroserviceApplication.getFilmActor(addFilmActor.getActor_id());
+
+        Assertions.assertEquals(ResponseEntity.ok(addFilmActor), actual);
+        verify(filmActorRepository).findById(addFilmActor.getActor_id());
+
+    }
+
+    @Test
+    public void testAddFilmActor(){
+
+        FilmActor newFilmActor = new FilmActor(1,1);
+
+        String expected = "Saved";
+
+        String actual = myFirstMicroserviceApplication.addFilmActor(newFilmActor.getActor_id(), newFilmActor.getFilm_id());
+
+        ArgumentCaptor<FilmActor> filmActorArgumentCaptor = ArgumentCaptor.forClass(FilmActor.class);
+
+        verify(filmActorRepository).save(filmActorArgumentCaptor.capture());
+
+        filmActorArgumentCaptor.getValue();
+
+        Assertions.assertEquals(expected, actual, "Actor is not saved in database");
+
+    }
+
+
+    @Test
+    public void testUpdateFilmActor(){
+
+        FilmActor updateFilmActor1 = new FilmActor(1,1);
+
+        FilmActor updateFilmActor2 = new FilmActor(2,2);
+
+        given(filmActorRepository.findById(updateFilmActor1.getActor_id())).willReturn(Optional.of(updateFilmActor1));
+
+        ResponseEntity<FilmActor> expected = ResponseEntity.ok(updateFilmActor2);
+
+        ResponseEntity<FilmActor> actual = myFirstMicroserviceApplication.updateFilmActor(updateFilmActor1.getActor_id(), updateFilmActor2.getActor_id(), updateFilmActor2.getFilm_id());
+
+        Assertions.assertNotEquals(expected, actual, "DB does not update correctly");
+
+    }
+
+    @Test
+    public void testDeleteFilmActor(){
+
+        FilmActor newFilmActor = new FilmActor(1,1);
+        given(filmActorRepository.findById(newFilmActor.getActor_id())).willReturn(Optional.of(newFilmActor));
+
+        ResponseEntity<HttpStatus> expected = new ResponseEntity<>(HttpStatus.NO_CONTENT);
+
+        ResponseEntity<HttpStatus> actual = myFirstMicroserviceApplication.deleteFilmActor(newFilmActor.getActor_id());
+
+        Assertions.assertEquals(expected, actual, "Actor not correctly deleted from DB");
+
+    }
+
+     /* *
+     *
+     * Film crud operation tests
+     *
+     * */
+
+
+
+     /* *
+     *
+     * FilmCategory crud operation tests
+     *
+     * */
+
+
+
+     /* *
+     *
+     * Category crud operation tests
+     *
+     * */
+
+
+
+     /* *
+     *
+     * Language crud operations
+     *
+     * */
 
 }
