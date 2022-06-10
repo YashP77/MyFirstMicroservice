@@ -17,55 +17,33 @@ public class FilmCategory {
     private Integer film_id;
     private Integer category_id;
 
-    @LastModifiedDate
-    private LocalDateTime lastUpdate;
-
     // Constructor
-<span class="nc" id="L24">    public FilmCategory(){</span>
+<span class="nc" id="L21">    public FilmCategory(){</span>
 
-<span class="nc" id="L26">    }</span>
+<span class="nc" id="L23">    }</span>
 
-<span class="nc" id="L28">    public FilmCategory(Integer film_id, Integer category_id){</span>
-<span class="nc" id="L29">        this.film_id = film_id;</span>
-<span class="nc" id="L30">        this.category_id = category_id;</span>
-<span class="nc" id="L31">        this.lastUpdate = LocalDateTime.now();</span>
-
-<span class="nc" id="L33">    }</span>
+<span class="nc" id="L25">    public FilmCategory(Integer film_id, Integer category_id){</span>
+<span class="nc" id="L26">        this.film_id = film_id;</span>
+<span class="nc" id="L27">        this.category_id = category_id;</span>
+<span class="nc" id="L28">    }</span>
 
     //Methods
 
 
     public Integer getFilm_id() {
-<span class="nc" id="L39">        return film_id;</span>
+<span class="nc" id="L34">        return film_id;</span>
     }
 
     public void setFilm_id(Integer film_id) {
-<span class="nc" id="L43">        this.film_id = film_id;</span>
-<span class="nc" id="L44">    }</span>
+<span class="nc" id="L38">        this.film_id = film_id;</span>
+<span class="nc" id="L39">    }</span>
 
     public Integer getCategory_id() {
-<span class="nc" id="L47">        return category_id;</span>
+<span class="nc" id="L42">        return category_id;</span>
     }
 
     public void setCategory_id(Integer category_id) {
-<span class="nc" id="L51">        this.category_id = category_id;</span>
-<span class="nc" id="L52">    }</span>
-
-    public LocalDateTime getLastUpdate() {
-<span class="nc" id="L55">        return lastUpdate;</span>
-    }
-
-    public void setLastUpdate(LocalDateTime lastUpdate) {
-<span class="nc" id="L59">        this.lastUpdate = lastUpdate;</span>
-<span class="nc" id="L60">    }</span>
-
-    @Override
-    public String toString() {
-<span class="nc" id="L64">        return &quot;FilmCategory{&quot; +</span>
-                &quot;film_id=&quot; + film_id +
-                &quot;, category_id=&quot; + category_id +
-                &quot;, lastUpdate=&quot; + lastUpdate +
-                '}';
-    }
+<span class="nc" id="L46">        this.category_id = category_id;</span>
+<span class="nc" id="L47">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

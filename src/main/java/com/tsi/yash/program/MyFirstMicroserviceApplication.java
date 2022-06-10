@@ -141,7 +141,6 @@ public class MyFirstMicroserviceApplication {
 
 		updateFilmActor.setActor_id(actor_id);
 		updateFilmActor.setFilm_id(film_id);
-		updateFilmActor.setLastUpdate(LocalDateTime.now());
 
 		filmActorRepository.save(updateFilmActor);
 
@@ -204,7 +203,6 @@ public class MyFirstMicroserviceApplication {
 		updateFilm.setReplacement_cost(replacement_cost);
 		updateFilm.setRating(rating);
 		updateFilm.setSpecial_features(special_features);
-		updateFilm.setLastUpdate(LocalDateTime.now());
 
 		filmRepository.save(updateFilm);
 
@@ -257,7 +255,6 @@ public class MyFirstMicroserviceApplication {
 
 		updateFilmCategory.setFilm_id(film_id);
 		updateFilmCategory.setCategory_id(categoryId);
-		updateFilmCategory.setLastUpdate(LocalDateTime.now());
 
 		filmCategoryRepository.save(updateFilmCategory);
 
@@ -310,7 +307,6 @@ public class MyFirstMicroserviceApplication {
 
 		updateCategory.setCategory_id(categoryId);
 		updateCategory.setName(name);
-		updateCategory.setLastUpdate(LocalDateTime.now());
 
 		categoryRepository.save(updateCategory);
 
@@ -363,7 +359,6 @@ public class MyFirstMicroserviceApplication {
 
 		updateLanguage.setLanguage_id(language_id);
 		updateLanguage.setName(name);
-		updateLanguage.setLastUpdate(LocalDateTime.now());
 
 		languageRepository.save(updateLanguage);
 

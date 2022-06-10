@@ -17,9 +17,6 @@ public class FilmCategory {
     private Integer film_id;
     private Integer category_id;
 
-    @LastModifiedDate
-    private LocalDateTime lastUpdate;
-
     // Constructor
     public FilmCategory(){
 
@@ -28,8 +25,6 @@ public class FilmCategory {
     public FilmCategory(Integer film_id, Integer category_id){
         this.film_id = film_id;
         this.category_id = category_id;
-        this.lastUpdate = LocalDateTime.now();
-
     }
 
     //Methods
@@ -49,22 +44,5 @@ public class FilmCategory {
 
     public void setCategory_id(Integer category_id) {
         this.category_id = category_id;
-    }
-
-    public LocalDateTime getLastUpdate() {
-        return lastUpdate;
-    }
-
-    public void setLastUpdate(LocalDateTime lastUpdate) {
-        this.lastUpdate = lastUpdate;
-    }
-
-    @Override
-    public String toString() {
-        return "FilmCategory{" +
-                "film_id=" + film_id +
-                ", category_id=" + category_id +
-                ", lastUpdate=" + lastUpdate +
-                '}';
     }
 }

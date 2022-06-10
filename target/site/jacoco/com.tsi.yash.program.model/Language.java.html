@@ -16,52 +16,40 @@ public class Language {
     private Integer language_id;
     private String name;
 
-    @LastModifiedDate
-    private LocalDateTime lastUpdate;
-
     //Constructor
-<span class="nc" id="L23">    public Language(){</span>
+<span class="nc" id="L20">    public Language(){</span>
 
-<span class="nc" id="L25">    }</span>
+<span class="nc" id="L22">    }</span>
 
-<span class="nc" id="L27">    public Language(String name){</span>
-<span class="nc" id="L28">        this.name = name;</span>
-<span class="nc" id="L29">        this.lastUpdate = LocalDateTime.now();</span>
-<span class="nc" id="L30">    }</span>
+<span class="nc" id="L24">    public Language(String name){</span>
+<span class="nc" id="L25">        this.name = name;</span>
+<span class="nc" id="L26">    }</span>
 
     //Methods
 
 
     public Integer getLanguage_id() {
-<span class="nc" id="L36">        return language_id;</span>
+<span class="nc" id="L32">        return language_id;</span>
     }
 
     public void setLanguage_id(Integer language_id) {
-<span class="nc" id="L40">        this.language_id = language_id;</span>
-<span class="nc" id="L41">    }</span>
+<span class="nc" id="L36">        this.language_id = language_id;</span>
+<span class="nc" id="L37">    }</span>
 
     public String getName() {
-<span class="nc" id="L44">        return name;</span>
+<span class="nc" id="L40">        return name;</span>
     }
 
     public void setName(String name) {
-<span class="nc" id="L48">        this.name = name;</span>
-<span class="nc" id="L49">    }</span>
+<span class="nc" id="L44">        this.name = name;</span>
+<span class="nc" id="L45">    }</span>
 
-    public LocalDateTime getLastUpdate() {
-<span class="nc" id="L52">        return lastUpdate;</span>
-    }
-
-    public void setLastUpdate(LocalDateTime lastUpdate) {
-<span class="nc" id="L56">        this.lastUpdate = lastUpdate;</span>
-<span class="nc" id="L57">    }</span>
 
     @Override
     public String toString() {
-<span class="nc" id="L61">        return &quot;Language{&quot; +</span>
+<span class="nc" id="L50">        return &quot;Language{&quot; +</span>
                 &quot;language_id=&quot; + language_id +
                 &quot;, name='&quot; + name + '\'' +
-                &quot;, lastUpdate=&quot; + lastUpdate +
                 '}';
     }
 }

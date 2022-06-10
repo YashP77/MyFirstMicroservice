@@ -16,54 +16,34 @@ public class Category {
     private Integer category_id;
     private String name;
 
-    @LastModifiedDate
-    private LocalDateTime lastUpdate;
 
     // Constructor
-<span class="nc" id="L23">    public Category(){</span>
+<span class="nc" id="L21">    public Category(){</span>
 
-<span class="nc" id="L25">    }</span>
+<span class="nc" id="L23">    }</span>
 
-<span class="nc" id="L27">    public Category(Integer category_id, String name){</span>
-<span class="nc" id="L28">        this.category_id = category_id;</span>
-<span class="nc" id="L29">        this.name=name;</span>
-<span class="nc" id="L30">        this.lastUpdate = LocalDateTime.now();</span>
-<span class="nc" id="L31">    }</span>
+<span class="nc" id="L25">    public Category(Integer category_id, String name){</span>
+<span class="nc" id="L26">        this.category_id = category_id;</span>
+<span class="nc" id="L27">        this.name=name;</span>
+<span class="nc" id="L28">    }</span>
 
     // Methods
 
 
     public Integer getCategory_id() {
-<span class="nc" id="L37">        return category_id;</span>
+<span class="nc" id="L34">        return category_id;</span>
     }
 
     public void setCategory_id(Integer category_id) {
-<span class="nc" id="L41">        this.category_id = category_id;</span>
-<span class="nc" id="L42">    }</span>
+<span class="nc" id="L38">        this.category_id = category_id;</span>
+<span class="nc" id="L39">    }</span>
 
     public String getName() {
-<span class="nc" id="L45">        return name;</span>
+<span class="nc" id="L42">        return name;</span>
     }
 
     public void setName(String name) {
-<span class="nc" id="L49">        this.name = name;</span>
-<span class="nc" id="L50">    }</span>
-
-    public LocalDateTime getLastUpdate() {
-<span class="nc" id="L53">        return lastUpdate;</span>
-    }
-
-    public void setLastUpdate(LocalDateTime lastUpdate) {
-<span class="nc" id="L57">        this.lastUpdate = lastUpdate;</span>
-<span class="nc" id="L58">    }</span>
-
-    @Override
-    public String toString() {
-<span class="nc" id="L62">        return &quot;Category{&quot; +</span>
-                &quot;category_id=&quot; + category_id +
-                &quot;, name='&quot; + name + '\'' +
-                &quot;, lastUpdate=&quot; + lastUpdate +
-                '}';
-    }
+<span class="nc" id="L46">        this.name = name;</span>
+<span class="nc" id="L47">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

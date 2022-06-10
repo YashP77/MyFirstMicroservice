@@ -16,9 +16,6 @@ public class FilmActor {
 
     private Integer film_id;
 
-    @LastModifiedDate
-    private LocalDateTime lastUpdate;
-
     //Constructors
     public FilmActor(){
     }
@@ -26,7 +23,6 @@ public class FilmActor {
     public FilmActor(Integer actor_id, Integer film_id) {
         this.actor_id = actor_id;
         this.film_id = film_id;
-        this.lastUpdate = LocalDateTime.now();
     }
 
     //Methods
@@ -46,20 +42,4 @@ public class FilmActor {
         this.film_id = film_id;
     }
 
-    public LocalDateTime getLastUpdate() {
-        return lastUpdate;
-    }
-
-    public void setLastUpdate(LocalDateTime lastUpdate) {
-        this.lastUpdate = lastUpdate;
-    }
-
-    @Override
-    public String toString() {
-        return "Film_actor{" +
-                "actor_id=" + actor_id +
-                ", film_id=" + film_id +
-                ", lastUpdate=" + lastUpdate +
-                '}';
-    }
 }

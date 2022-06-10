@@ -16,9 +16,6 @@ public class Language {
     private Integer language_id;
     private String name;
 
-    @LastModifiedDate
-    private LocalDateTime lastUpdate;
-
     //Constructor
     public Language(){
 
@@ -26,7 +23,6 @@ public class Language {
 
     public Language(String name){
         this.name = name;
-        this.lastUpdate = LocalDateTime.now();
     }
 
     //Methods
@@ -48,20 +44,12 @@ public class Language {
         this.name = name;
     }
 
-    public LocalDateTime getLastUpdate() {
-        return lastUpdate;
-    }
-
-    public void setLastUpdate(LocalDateTime lastUpdate) {
-        this.lastUpdate = lastUpdate;
-    }
 
     @Override
     public String toString() {
         return "Language{" +
                 "language_id=" + language_id +
                 ", name='" + name + '\'' +
-                ", lastUpdate=" + lastUpdate +
                 '}';
     }
 }
