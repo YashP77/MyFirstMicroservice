@@ -1,11 +1,7 @@
 package com.tsi.yash.program.model;
 
-
-
-import org.springframework.data.annotation.LastModifiedDate;
-
 import javax.persistence.*;
-import java.time.LocalDateTime;
+
 
 @Entity
 @Table(name="film")
