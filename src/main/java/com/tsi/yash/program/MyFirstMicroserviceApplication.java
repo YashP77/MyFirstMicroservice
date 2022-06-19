@@ -15,6 +15,7 @@ import java.time.LocalDateTime;
 @SpringBootApplication
 @RestController
 @RequestMapping("/Home")
+@CrossOrigin(origins = "*")
 public class MyFirstMicroserviceApplication {
 
 	String unNeeded;
@@ -49,8 +50,6 @@ public class MyFirstMicroserviceApplication {
 		this.languageRepository = languageRepository;
 	}
 
-
-
 	/* *
 	*
 	* Actor crud operations
@@ -73,13 +72,12 @@ public class MyFirstMicroserviceApplication {
 	}
 
 	@PostMapping("/addActor")
-	public @ResponseBody String addActor(@RequestParam String first_name, String last_name){
-
+	public ResponseEntity<Actor> addActor(@RequestParam String first_name, String last_name){
 
 		Actor addActor = new Actor(first_name,last_name);
 		actorRepository.save(addActor);
 
-		return saved;
+		return ResponseEntity.ok(addActor);
 	}
 
 	@PutMapping("/updateActor")
@@ -126,12 +124,12 @@ public class MyFirstMicroserviceApplication {
 	}
 
 	@PostMapping("/addFilmActor")
-	public @ResponseBody String addFilmActor(@RequestParam Integer actor_id, Integer film_id){
+	public ResponseEntity<FilmActor> addFilmActor(@RequestParam Integer actor_id, Integer film_id){
 
 		FilmActor addFilmActor = new FilmActor(actor_id,film_id);
 		filmActorRepository.save(addFilmActor);
 
-		return saved;
+		return ResponseEntity.ok(addFilmActor);
 	}
 
 	@PutMapping("/updateFilmActor")
@@ -178,16 +176,16 @@ public class MyFirstMicroserviceApplication {
 	}
 
 	@PostMapping("/addFilm")
-	public @ResponseBody String addFilm(@RequestParam Integer film_id, String title, String description, Integer release_year, String language_id, String original_language_id, Integer rental_duration, Integer rental_rate, Integer length, Integer replacement_cost, Integer rating, String special_features){
+	public ResponseEntity<Film> addFilm(@RequestParam String title, String description, Integer release_year, String language_id, String original_language_id, Integer rental_duration, Integer rental_rate, Integer length, Integer replacement_cost, String rating, String special_features){
 
-		Film addFilm = new Film(film_id, title, description, release_year, language_id, original_language_id, rental_duration, rental_rate,length,replacement_cost,rating,special_features);
+		Film addFilm = new Film(title, description, release_year, language_id, original_language_id, rental_duration, rental_rate,length,replacement_cost,rating,special_features);
 		filmRepository.save(addFilm);
 
-		return saved;
+		return ResponseEntity.ok(addFilm);
 	}
 
 	@PutMapping("/updateFilm")
-	public ResponseEntity<Film> updateFilm(@RequestParam Integer film_id, String title, String description, Integer release_year, String language_id, String original_language_id, Integer rental_duration, Integer rental_rate, Integer length, Integer replacement_cost, Integer rating, String special_features){
+	public ResponseEntity<Film> updateFilm(@RequestParam Integer film_id, String title, String description, Integer release_year, String language_id, String original_language_id, Integer rental_duration, Integer rental_rate, Integer length, Integer replacement_cost, String rating, String special_features){
 		Film updateFilm = filmRepository.findById(film_id)
 				.orElseThrow(() -> new ResourceNotFoundException("Actor not exist with id: " + film_id));
 
@@ -240,12 +238,12 @@ public class MyFirstMicroserviceApplication {
 	}
 
 	@PostMapping("/addFilmCategory")
-	public @ResponseBody String addFilmCategory(@RequestParam Integer film_id, Integer categoryId){
+	public ResponseEntity<FilmCategory> addFilmCategory(@RequestParam Integer film_id, Integer categoryId){
 
 		FilmCategory addFilmCategory = new FilmCategory(film_id, categoryId);
 		filmCategoryRepository.save(addFilmCategory);
 
-		return saved;
+		return ResponseEntity.ok(addFilmCategory);
 	}
 
 	@PutMapping("/updateFilmCategory")
@@ -292,12 +290,12 @@ public class MyFirstMicroserviceApplication {
 	}
 
 	@PostMapping("/addCategory")
-	public @ResponseBody String addCategory(@RequestParam Integer category_id, String name){
+	public ResponseEntity<Category> addCategory(@RequestParam String name){
 
-		Category addCategory = new Category(category_id,name);
+		Category addCategory = new Category(name);
 		categoryRepository.save(addCategory);
 
-		return saved;
+		return ResponseEntity.ok(addCategory);
 	}
 
 	@PutMapping("/updateCategory")
@@ -344,12 +342,12 @@ public class MyFirstMicroserviceApplication {
 	}
 
 	@PostMapping("/addLanguage")
-	public @ResponseBody String addCategory(@RequestParam String name){
+	public ResponseEntity<Language> addLanguage(@RequestParam String name){
 
 		Language addLanguage = new Language(name);
 		languageRepository.save(addLanguage);
 
-		return saved;
+		return ResponseEntity.ok(addLanguage);
 	}
 
 	@PutMapping("/updateLanguage")
@@ -375,4 +373,14 @@ public class MyFirstMicroserviceApplication {
 
 		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}
+
+	/* *
+	 *
+	 * Join relevant information
+	 *
+	 * */
+
+//	@GetMapping("getAllFilmInformation")
+//	public ResponseEntity<>
+
 }

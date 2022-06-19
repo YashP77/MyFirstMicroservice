@@ -29,7 +29,7 @@ public class Film {
 
     private Integer replacement_cost;
 
-    private Integer rating;
+    private String rating;
 
     private String special_features;
 
@@ -38,8 +38,7 @@ public class Film {
 
     }
 
-    public Film(Integer film_id, String title, String description, Integer release_year, String language_id, String original_language_id, Integer rental_duration, Integer rental_rate, Integer length, Integer replacement_cost, Integer rating, String special_features) {
-        this.film_id = film_id;
+    public Film(String title, String description, Integer release_year, String language_id, String original_language_id, Integer rental_duration, Integer rental_rate, Integer length, Integer replacement_cost, String rating, String special_features) {
         this.title = title;
         this.description = description;
         this.release_year = release_year;
@@ -134,11 +133,11 @@ public class Film {
         this.replacement_cost = replacement_cost;
     }
 
-    public Integer getRating() {
+    public String getRating() {
         return rating;
     }
 
-    public void setRating(Integer rating) {
+    public void setRating(String rating) {
         this.rating = rating;
     }
 

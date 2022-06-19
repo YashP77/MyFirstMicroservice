@@ -20,8 +20,7 @@ public class Category {
 
     }
 
-    public Category(Integer category_id, String name){
-        this.category_id = category_id;
+    public Category(String name){
         this.name=name;
     }
 
