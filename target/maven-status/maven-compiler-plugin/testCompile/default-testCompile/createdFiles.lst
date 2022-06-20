@@ -1,5 +1,8 @@
-com\tsi\yash\program\MockitoTest.class
 com\tsi\yash\program\model\ActorTest.class
-runCucumberTest.class
 com\tsi\yash\program\MyFirstMicroserviceApplicationTests.class
-com\tsi\yash\program\viewAllActorsStepDef.class
+com\tsi\yash\program\CucumberStepDefs\actorStepDefs\deleteActorStepDef.class
+com\tsi\yash\program\CucumberStepDefs\actorStepDefs\addActorStepDef.class
+com\tsi\yash\program\MockitoTest.class
+runCucumberTest.class
+com\tsi\yash\program\CucumberStepDefs\actorStepDefs\viewActorStepDef.class
+com\tsi\yash\program\CucumberStepDefs\actorStepDefs\updateActorStepDef.class
