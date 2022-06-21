@@ -1,8 +1,13 @@
 com\tsi\yash\program\model\ActorTest.class
-com\tsi\yash\program\MyFirstMicroserviceApplicationTests.class
-com\tsi\yash\program\CucumberStepDefs\actorStepDefs\deleteActorStepDef.class
+com\tsi\yash\program\CucumberStepDefs\filmStepDefs\addFilmStepDef.class
+com\tsi\yash\program\CucumberStepDefs\filmStepDefs\updateFilmStepDef.class
 com\tsi\yash\program\CucumberStepDefs\actorStepDefs\addActorStepDef.class
+com\tsi\yash\program\CucumberStepDefs\filmStepDefs\viewFilmStepDef.class
 com\tsi\yash\program\MockitoTest.class
 runCucumberTest.class
+com\tsi\yash\program\seleniumTest.class
+com\tsi\yash\program\CucumberStepDefs\filmStepDefs\deleteFilmStepDef.class
+com\tsi\yash\program\MyFirstMicroserviceApplicationTests.class
+com\tsi\yash\program\CucumberStepDefs\actorStepDefs\deleteActorStepDef.class
 com\tsi\yash\program\CucumberStepDefs\actorStepDefs\viewActorStepDef.class
 com\tsi\yash\program\CucumberStepDefs\actorStepDefs\updateActorStepDef.class

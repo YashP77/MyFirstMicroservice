@@ -3,7 +3,6 @@ package com.tsi.yash.program.CucumberStepDefs.actorStepDefs;
 import com.tsi.yash.program.MyFirstMicroserviceApplication;
 import com.tsi.yash.program.model.Actor;
 import com.tsi.yash.program.repositories.*;
-import io.cucumber.java.bs.A;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -12,7 +11,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.springframework.http.ResponseEntity;
-
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
