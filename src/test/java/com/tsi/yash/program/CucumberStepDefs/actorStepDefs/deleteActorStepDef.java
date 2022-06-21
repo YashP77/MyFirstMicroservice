@@ -46,20 +46,20 @@ public class deleteActorStepDef {
     @Given("I have the actor id that I would like to delete")
     public void i_have_the_actor_id_that_i_would_like_to_delete() {
         // Write code here that turns the phrase above into concrete actions
-        testActor = new Actor(1 ,"TestAdd", "TestAdd");
+        testActor = new Actor("TestAdd", "TestAdd");
     }
 
     @When("I input the ID for the actor I would like to delete")
     public void i_input_the_id_for_the_actor_i_would_like_to_delete() {
         // Write code here that turns the phrase above into concrete actions
         setUp();
-        when(actorRepository.findById(1)).thenReturn(Optional.of(testActor));
+        when(actorRepository.findById(testActor.getActor_id())).thenReturn(Optional.of(testActor));
     }
 
     @Then("I get the response shown for deleting actor")
     public void i_get_the_response_shown_for_deleting_actor() {
         // Write code here that turns the phrase above into concrete actions
-        myFirstMicroserviceApplication.deleteActor(1);
+        myFirstMicroserviceApplication.deleteActor(testActor.getActor_id());
         verify(actorRepository).delete(testActor);
     }
 }

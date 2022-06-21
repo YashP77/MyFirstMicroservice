@@ -56,9 +56,9 @@ public class MockitoTest {
     @Test
     public void getActor(){
 
-        Actor testActor = new Actor(1,"TestAdd","TestAdd");
+        Actor testActor = new Actor("TestAdd","TestAdd");
 
-        when(actorRepository.findById(1)).thenReturn(Optional.of(testActor));
+        when(actorRepository.findById(testActor.getActor_id())).thenReturn(Optional.of(testActor));
 
         ResponseEntity<Actor> actual = myFirstMicroserviceApplication.getActor(testActor.getActor_id());
 
@@ -87,9 +87,9 @@ public class MockitoTest {
     @Test
     public void testUpdateActor(){
 
-        Actor testActor1 = new Actor(1,"TestUpdate", "TestUpdate");
+        Actor testActor1 = new Actor("TestUpdate", "TestUpdate");
 
-        Actor testActor2 = new Actor(1,"TestUpdated", "TestUpdated");
+        Actor testActor2 = new Actor("TestUpdated", "TestUpdated");
 
         when(actorRepository.findById(testActor1.getActor_id())).thenReturn(Optional.of(testActor2));
 
@@ -108,10 +108,10 @@ public class MockitoTest {
     @Test
     public void testDeleteActor(){
 
-        Actor testActor = new Actor(1 ,"TestAdd", "TestAdd");
+        Actor testActor = new Actor("TestAdd", "TestAdd");
 
-        when(actorRepository.findById(1)).thenReturn(Optional.of(testActor));
-        myFirstMicroserviceApplication.deleteActor(1);
+        when(actorRepository.findById(testActor.getActor_id())).thenReturn(Optional.of(testActor));
+        myFirstMicroserviceApplication.deleteActor(testActor.getActor_id());
         verify(actorRepository).delete(testActor);
     }
 

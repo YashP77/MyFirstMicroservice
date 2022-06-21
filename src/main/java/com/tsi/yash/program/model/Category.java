@@ -1,6 +1,10 @@
 package com.tsi.yash.program.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 
 @Entity
@@ -14,6 +18,10 @@ public class Category {
     private Integer category_id;
     private String name;
 
+    @ManyToMany (mappedBy = "category", fetch = FetchType.LAZY)
+    @JsonIgnore
+    private Set<Film> films = new HashSet<>();
+
 
     // Constructor
     public Category(){
@@ -25,7 +33,6 @@ public class Category {
     }
 
     // Methods
-
 
     public Integer getCategory_id() {
         return category_id;
@@ -41,5 +48,13 @@ public class Category {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Set<Film> getFilms() {
+        return films;
+    }
+
+    public void setFilms(Set<Film> films) {
+        this.films = films;
     }
 }

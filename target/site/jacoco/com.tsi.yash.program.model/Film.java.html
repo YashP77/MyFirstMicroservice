@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Film.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">myFirstMicroservice</a> &gt; <a href="index.source.html" class="el_package">com.tsi.yash.program.model</a> &gt; <span class="el_source">Film.java</span></div><h1>Film.java</h1><pre class="source lang-java linenums">package com.tsi.yash.program.model;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 
 @Entity
@@ -33,120 +35,159 @@ public class Film {
 
     private String special_features;
 
+    //Mapping the many-to-many relationship between Film and Actor into Film.
+<span class="pc" id="L39">    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)</span>
+    @JoinTable(name = &quot;film_actor&quot;,
+            joinColumns = {
+                    @JoinColumn(name = &quot;film_id&quot;,referencedColumnName = &quot;film_id&quot;, nullable = false, updatable = false)
+            },
+            inverseJoinColumns = {
+                    @JoinColumn(name = &quot;actor_id&quot;, referencedColumnName = &quot;actor_id&quot;, nullable = false, updatable = false)
+            })
+    private Set&lt;Actor&gt; actor = new HashSet&lt;&gt;();
+
+    //Mapping the many-to-many relationship between Film and Category into Film.
+<span class="pc" id="L50">    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)</span>
+    @JoinTable(name = &quot;film_category&quot;,
+            joinColumns = {
+                    @JoinColumn(name =&quot;film_id&quot;, referencedColumnName = &quot;film_id&quot;, nullable = false, updatable = false)
+            },
+            inverseJoinColumns = {
+                    @JoinColumn(name = &quot;category_id&quot;, referencedColumnName = &quot;category_id&quot;, nullable = false, updatable = false)
+            })
+    private Set&lt;Category&gt; category = new HashSet&lt;&gt;();
+
+
     //Constructors
-<span class="nc" id="L37">    public Film(){</span>
+<span class="nc" id="L62">    public Film(){</span>
 
-<span class="nc" id="L39">    }</span>
+<span class="nc" id="L64">    }</span>
 
-<span class="fc" id="L41">    public Film(String title, String description, Integer release_year, String language_id, String original_language_id, Integer rental_duration, Integer rental_rate, Integer length, Integer replacement_cost, String rating, String special_features) {</span>
-<span class="fc" id="L42">        this.title = title;</span>
-<span class="fc" id="L43">        this.description = description;</span>
-<span class="fc" id="L44">        this.release_year = release_year;</span>
-<span class="fc" id="L45">        this.language_id = language_id;</span>
-<span class="fc" id="L46">        this.original_language_id = original_language_id;</span>
-<span class="fc" id="L47">        this.rental_duration = rental_duration;</span>
-<span class="fc" id="L48">        this.rental_rate = rental_rate;</span>
-<span class="fc" id="L49">        this.length = length;</span>
-<span class="fc" id="L50">        this.replacement_cost = replacement_cost;</span>
-<span class="fc" id="L51">        this.rating = rating;</span>
-<span class="fc" id="L52">        this.special_features = special_features;</span>
-<span class="fc" id="L53">    }</span>
+<span class="fc" id="L66">    public Film(String title, String description, Integer release_year, String language_id, String original_language_id, Integer rental_duration, Integer rental_rate, Integer length, Integer replacement_cost, String rating, String special_features) {</span>
+<span class="fc" id="L67">        this.title = title;</span>
+<span class="fc" id="L68">        this.description = description;</span>
+<span class="fc" id="L69">        this.release_year = release_year;</span>
+<span class="fc" id="L70">        this.language_id = language_id;</span>
+<span class="fc" id="L71">        this.original_language_id = original_language_id;</span>
+<span class="fc" id="L72">        this.rental_duration = rental_duration;</span>
+<span class="fc" id="L73">        this.rental_rate = rental_rate;</span>
+<span class="fc" id="L74">        this.length = length;</span>
+<span class="fc" id="L75">        this.replacement_cost = replacement_cost;</span>
+<span class="fc" id="L76">        this.rating = rating;</span>
+<span class="fc" id="L77">        this.special_features = special_features;</span>
+<span class="fc" id="L78">    }</span>
 
     //Methods
     public Integer getFilm_id() {
-<span class="fc" id="L57">        return film_id;</span>
+<span class="fc" id="L82">        return film_id;</span>
     }
 
     public void setFilm_id(Integer film_id) {
-<span class="fc" id="L61">        this.film_id = film_id;</span>
-<span class="fc" id="L62">    }</span>
+<span class="fc" id="L86">        this.film_id = film_id;</span>
+<span class="fc" id="L87">    }</span>
 
     public String getTitle() {
-<span class="fc" id="L65">        return title;</span>
+<span class="fc" id="L90">        return title;</span>
     }
 
     public void setTitle(String title) {
-<span class="fc" id="L69">        this.title = title;</span>
-<span class="fc" id="L70">    }</span>
+<span class="fc" id="L94">        this.title = title;</span>
+<span class="fc" id="L95">    }</span>
 
     public String getDescription() {
-<span class="fc" id="L73">        return description;</span>
+<span class="fc" id="L98">        return description;</span>
     }
 
     public void setDescription(String description) {
-<span class="fc" id="L77">        this.description = description;</span>
-<span class="fc" id="L78">    }</span>
+<span class="fc" id="L102">        this.description = description;</span>
+<span class="fc" id="L103">    }</span>
 
     public Integer getRelease_year() {
-<span class="fc" id="L81">        return release_year;</span>
+<span class="fc" id="L106">        return release_year;</span>
     }
 
     public void setRelease_year(Integer release_year) {
-<span class="fc" id="L85">        this.release_year = release_year;</span>
-<span class="fc" id="L86">    }</span>
+<span class="fc" id="L110">        this.release_year = release_year;</span>
+<span class="fc" id="L111">    }</span>
 
     public String getLanguage_id() {
-<span class="fc" id="L89">        return language_id;</span>
+<span class="fc" id="L114">        return language_id;</span>
     }
 
     public void setLanguage_id(String language_id) {
-<span class="fc" id="L93">        this.language_id = language_id;</span>
-<span class="fc" id="L94">    }</span>
+<span class="fc" id="L118">        this.language_id = language_id;</span>
+<span class="fc" id="L119">    }</span>
 
     public String getOriginal_language_id() {
-<span class="fc" id="L97">        return original_language_id;</span>
+<span class="fc" id="L122">        return original_language_id;</span>
     }
 
     public void setOriginal_language_id(String original_language_id) {
-<span class="fc" id="L101">        this.original_language_id = original_language_id;</span>
-<span class="fc" id="L102">    }</span>
+<span class="fc" id="L126">        this.original_language_id = original_language_id;</span>
+<span class="fc" id="L127">    }</span>
 
     public Integer getRental_duration() {
-<span class="fc" id="L105">        return rental_duration;</span>
+<span class="fc" id="L130">        return rental_duration;</span>
     }
 
     public void setRental_duration(Integer rental_duration) {
-<span class="fc" id="L109">        this.rental_duration = rental_duration;</span>
-<span class="fc" id="L110">    }</span>
+<span class="fc" id="L134">        this.rental_duration = rental_duration;</span>
+<span class="fc" id="L135">    }</span>
 
     public Integer getRental_rate() {
-<span class="fc" id="L113">        return rental_rate;</span>
+<span class="fc" id="L138">        return rental_rate;</span>
     }
 
     public void setRental_rate(Integer rental_rate) {
-<span class="fc" id="L117">        this.rental_rate = rental_rate;</span>
-<span class="fc" id="L118">    }</span>
+<span class="fc" id="L142">        this.rental_rate = rental_rate;</span>
+<span class="fc" id="L143">    }</span>
 
     public Integer getLength() {
-<span class="fc" id="L121">        return length;</span>
+<span class="fc" id="L146">        return length;</span>
     }
 
     public void setLength(Integer length) {
-<span class="fc" id="L125">        this.length = length;</span>
-<span class="fc" id="L126">    }</span>
+<span class="fc" id="L150">        this.length = length;</span>
+<span class="fc" id="L151">    }</span>
 
     public Integer getReplacement_cost() {
-<span class="fc" id="L129">        return replacement_cost;</span>
+<span class="fc" id="L154">        return replacement_cost;</span>
     }
 
     public void setReplacement_cost(Integer replacement_cost) {
-<span class="fc" id="L133">        this.replacement_cost = replacement_cost;</span>
-<span class="fc" id="L134">    }</span>
+<span class="fc" id="L158">        this.replacement_cost = replacement_cost;</span>
+<span class="fc" id="L159">    }</span>
 
     public String getRating() {
-<span class="fc" id="L137">        return rating;</span>
+<span class="fc" id="L162">        return rating;</span>
     }
 
     public void setRating(String rating) {
-<span class="fc" id="L141">        this.rating = rating;</span>
-<span class="fc" id="L142">    }</span>
+<span class="fc" id="L166">        this.rating = rating;</span>
+<span class="fc" id="L167">    }</span>
 
     public String getSpecial_features() {
-<span class="fc" id="L145">        return special_features;</span>
+<span class="fc" id="L170">        return special_features;</span>
     }
 
     public void setSpecial_features(String special_features) {
-<span class="fc" id="L149">        this.special_features = special_features;</span>
-<span class="fc" id="L150">    }</span>
+<span class="fc" id="L174">        this.special_features = special_features;</span>
+<span class="fc" id="L175">    }</span>
+
+    public Set&lt;Actor&gt; getActor() {
+<span class="nc" id="L178">        return actor;</span>
+    }
+
+    public void setActor(Set&lt;Actor&gt; actor) {
+<span class="nc" id="L182">        this.actor = actor;</span>
+<span class="nc" id="L183">    }</span>
+
+    public Set&lt;Category&gt; getCategory() {
+<span class="nc" id="L186">        return category;</span>
+    }
+
+    public void setCategory(Set&lt;Category&gt; category) {
+<span class="nc" id="L190">        this.category = category;</span>
+<span class="nc" id="L191">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

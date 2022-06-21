@@ -1,6 +1,8 @@
 package com.tsi.yash.program.model;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 
 @Entity
@@ -32,6 +34,29 @@ public class Film {
     private String rating;
 
     private String special_features;
+
+    //Mapping the many-to-many relationship between Film and Actor into Film.
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    @JoinTable(name = "film_actor",
+            joinColumns = {
+                    @JoinColumn(name = "film_id",referencedColumnName = "film_id", nullable = false, updatable = false)
+            },
+            inverseJoinColumns = {
+                    @JoinColumn(name = "actor_id", referencedColumnName = "actor_id", nullable = false, updatable = false)
+            })
+    private Set<Actor> actor = new HashSet<>();
+
+    //Mapping the many-to-many relationship between Film and Category into Film.
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    @JoinTable(name = "film_category",
+            joinColumns = {
+                    @JoinColumn(name ="film_id", referencedColumnName = "film_id", nullable = false, updatable = false)
+            },
+            inverseJoinColumns = {
+                    @JoinColumn(name = "category_id", referencedColumnName = "category_id", nullable = false, updatable = false)
+            })
+    private Set<Category> category = new HashSet<>();
+
 
     //Constructors
     public Film(){
@@ -147,5 +172,21 @@ public class Film {
 
     public void setSpecial_features(String special_features) {
         this.special_features = special_features;
+    }
+
+    public Set<Actor> getActor() {
+        return actor;
+    }
+
+    public void setActor(Set<Actor> actor) {
+        this.actor = actor;
+    }
+
+    public Set<Category> getCategory() {
+        return category;
+    }
+
+    public void setCategory(Set<Category> category) {
+        this.category = category;
     }
 }

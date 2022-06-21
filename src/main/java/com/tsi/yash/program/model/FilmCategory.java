@@ -2,7 +2,7 @@ package com.tsi.yash.program.model;
 
 import javax.persistence.*;
 @Entity
-@Table(name="FilmCategory")
+@Table(name="film_category")
 public class FilmCategory {
 
     // Attributes

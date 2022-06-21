@@ -45,14 +45,14 @@ public class viewActorStepDef {
 
     @Given("I have the actors id number")
     public void i_have_the_actors_id_number() {
-        testActor = new Actor(1,"TestAdd","TestAdd");
+        testActor = new Actor("TestAdd","TestAdd");
     }
 
     @When("I input the id into the search")
     public void i_input_the_id_into_the_search() {
         // Write code here that turns the phrase above into concrete actions
         setUp();
-        when(actorRepository.findById(1)).thenReturn(Optional.of(testActor));
+        when(actorRepository.findById(testActor.getActor_id())).thenReturn(Optional.of(testActor));
         actual = myFirstMicroserviceApplication.getActor(testActor.getActor_id());
     }
 

@@ -10,15 +10,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDateTime;
-
 @SpringBootApplication
 @RestController
 @RequestMapping(&quot;/Home&quot;)
 @CrossOrigin(origins = &quot;*&quot;)
 public class MyFirstMicroserviceApplication {
-
-	String unNeeded;
 
 	@Autowired
 	private ActorRepository actorRepository;
@@ -33,22 +29,22 @@ public class MyFirstMicroserviceApplication {
 	@Autowired
 	private LanguageRepository languageRepository;
 
-<span class="fc" id="L36">	private String saved = &quot;Saved&quot;;</span>
+<span class="fc" id="L32">	private String saved = &quot;Saved&quot;;</span>
 
 	public static void main(String[] args) {
 
-<span class="nc" id="L40">		SpringApplication.run(MyFirstMicroserviceApplication.class, args);</span>
-<span class="nc" id="L41">	}</span>
+<span class="nc" id="L36">		SpringApplication.run(MyFirstMicroserviceApplication.class, args);</span>
+<span class="nc" id="L37">	}</span>
 
-<span class="fc" id="L43">	public MyFirstMicroserviceApplication(ActorRepository actorRepository, FilmActorRepository filmActorRepository, FilmRepository filmRepository, FilmCategoryRepository filmCategoryRepository,CategoryRepository categoryRepository, LanguageRepository languageRepository){</span>
+<span class="fc" id="L39">	public MyFirstMicroserviceApplication(ActorRepository actorRepository, FilmActorRepository filmActorRepository, FilmRepository filmRepository, FilmCategoryRepository filmCategoryRepository,CategoryRepository categoryRepository, LanguageRepository languageRepository){</span>
 
-<span class="fc" id="L45">		this.actorRepository = actorRepository;</span>
-<span class="fc" id="L46">		this.filmActorRepository = filmActorRepository;</span>
-<span class="fc" id="L47">		this.filmRepository = filmRepository;</span>
-<span class="fc" id="L48">		this.filmCategoryRepository = filmCategoryRepository;</span>
-<span class="fc" id="L49">		this.categoryRepository = categoryRepository;</span>
-<span class="fc" id="L50">		this.languageRepository = languageRepository;</span>
-<span class="fc" id="L51">	}</span>
+<span class="fc" id="L41">		this.actorRepository = actorRepository;</span>
+<span class="fc" id="L42">		this.filmActorRepository = filmActorRepository;</span>
+<span class="fc" id="L43">		this.filmRepository = filmRepository;</span>
+<span class="fc" id="L44">		this.filmCategoryRepository = filmCategoryRepository;</span>
+<span class="fc" id="L45">		this.categoryRepository = categoryRepository;</span>
+<span class="fc" id="L46">		this.languageRepository = languageRepository;</span>
+<span class="fc" id="L47">	}</span>
 
 	/* *
 	*
@@ -56,52 +52,52 @@ public class MyFirstMicroserviceApplication {
 	*
 	* */
 
-<span class="fc" id="L59">	String errorMsg = &quot;Actor does not exist with ID: &quot;;</span>
+<span class="fc" id="L55">	String errorMsg = &quot;Actor does not exist with ID: &quot;;</span>
 
 	@GetMapping(&quot;/allActors&quot;)
 	public @ResponseBody
 	Iterable&lt;Actor&gt;getAllActors(){
-<span class="fc" id="L64">		return actorRepository.findAll();</span>
+<span class="fc" id="L60">		return actorRepository.findAll();</span>
 	}
 
 	@GetMapping(&quot;/getActor&quot;)
 	public ResponseEntity&lt;Actor&gt; getActor(@RequestParam int actor_id){
-<span class="fc" id="L69">		Actor actor = actorRepository.findById(actor_id)</span>
-<span class="pc" id="L70">				.orElseThrow(() -&gt; new ResourceNotFoundException(errorMsg + actor_id));</span>
-<span class="fc" id="L71">		return ResponseEntity.ok(actor);</span>
+<span class="fc" id="L65">		Actor actor = actorRepository.findById(actor_id)</span>
+<span class="pc" id="L66">				.orElseThrow(() -&gt; new ResourceNotFoundException(errorMsg + actor_id));</span>
+<span class="fc" id="L67">		return ResponseEntity.ok(actor);</span>
 	}
 
 	@PostMapping(&quot;/addActor&quot;)
 	public ResponseEntity&lt;Actor&gt; addActor(@RequestParam String first_name, String last_name){
 
-<span class="fc" id="L77">		Actor addActor = new Actor(first_name,last_name);</span>
-<span class="fc" id="L78">		actorRepository.save(addActor);</span>
+<span class="fc" id="L73">		Actor addActor = new Actor(first_name,last_name);</span>
+<span class="fc" id="L74">		actorRepository.save(addActor);</span>
 
-<span class="fc" id="L80">		return ResponseEntity.ok(addActor);</span>
+<span class="fc" id="L76">		return ResponseEntity.ok(addActor);</span>
 	}
 
 	@PutMapping(&quot;/updateActor&quot;)
 	public ResponseEntity&lt;Actor&gt; updateActor(@RequestParam Integer id, String firstName, String lastName){
-<span class="fc" id="L85">		Actor updateActor = actorRepository.findById(id)</span>
-<span class="pc" id="L86">				.orElseThrow(() -&gt; new ResourceNotFoundException(errorMsg + id));</span>
+<span class="fc" id="L81">		Actor updateActor = actorRepository.findById(id)</span>
+<span class="pc" id="L82">				.orElseThrow(() -&gt; new ResourceNotFoundException(errorMsg + id));</span>
 
-<span class="fc" id="L88">		updateActor.setFirst_name(firstName);</span>
-<span class="fc" id="L89">		updateActor.setLast_name(lastName);</span>
+<span class="fc" id="L84">		updateActor.setFirst_name(firstName);</span>
+<span class="fc" id="L85">		updateActor.setLast_name(lastName);</span>
 
-<span class="fc" id="L91">		actorRepository.save(updateActor);</span>
+<span class="fc" id="L87">		actorRepository.save(updateActor);</span>
 
-<span class="fc" id="L93">		return ResponseEntity.ok(updateActor);</span>
+<span class="fc" id="L89">		return ResponseEntity.ok(updateActor);</span>
 	}
 
 	@DeleteMapping(&quot;/deleteActor&quot;)
 	public ResponseEntity&lt;HttpStatus&gt; deleteActor(@RequestParam Integer id){
 
-<span class="fc" id="L99">		Actor actor = actorRepository.findById(id)</span>
-<span class="pc" id="L100">				.orElseThrow(() -&gt; new ResourceNotFoundException(errorMsg + id));</span>
+<span class="fc" id="L95">		Actor actor = actorRepository.findById(id)</span>
+<span class="pc" id="L96">				.orElseThrow(() -&gt; new ResourceNotFoundException(errorMsg + id));</span>
 
-<span class="fc" id="L102">		actorRepository.delete(actor);</span>
+<span class="fc" id="L98">		actorRepository.delete(actor);</span>
 
-<span class="fc" id="L104">		return new ResponseEntity&lt;&gt;(HttpStatus.NO_CONTENT);</span>
+<span class="fc" id="L100">		return new ResponseEntity&lt;&gt;(HttpStatus.NO_CONTENT);</span>
 	}
 
 	 /* *
@@ -113,47 +109,47 @@ public class MyFirstMicroserviceApplication {
 	@GetMapping(&quot;/allFilmActors&quot;)
 	public @ResponseBody
 	Iterable&lt;FilmActor&gt;getAllFilmActors(){
-<span class="fc" id="L116">		return filmActorRepository.findAll();</span>
+<span class="fc" id="L112">		return filmActorRepository.findAll();</span>
 	}
 
 	@GetMapping(&quot;/getFilmActor&quot;)
 	public ResponseEntity&lt;FilmActor&gt; getFilmActor(@RequestParam Integer actor_id){
-<span class="fc" id="L121">		FilmActor filmActor = filmActorRepository.findById(actor_id)</span>
-<span class="pc" id="L122">				.orElseThrow(() -&gt; new ResourceNotFoundException(errorMsg + actor_id));</span>
-<span class="fc" id="L123">		return ResponseEntity.ok(filmActor);</span>
+<span class="fc" id="L117">		FilmActor filmActor = filmActorRepository.findById(actor_id)</span>
+<span class="pc" id="L118">				.orElseThrow(() -&gt; new ResourceNotFoundException(errorMsg + actor_id));</span>
+<span class="fc" id="L119">		return ResponseEntity.ok(filmActor);</span>
 	}
 
 	@PostMapping(&quot;/addFilmActor&quot;)
 	public ResponseEntity&lt;FilmActor&gt; addFilmActor(@RequestParam Integer actor_id, Integer film_id){
 
-<span class="fc" id="L129">		FilmActor addFilmActor = new FilmActor(actor_id,film_id);</span>
-<span class="fc" id="L130">		filmActorRepository.save(addFilmActor);</span>
+<span class="fc" id="L125">		FilmActor addFilmActor = new FilmActor(actor_id,film_id);</span>
+<span class="fc" id="L126">		filmActorRepository.save(addFilmActor);</span>
 
-<span class="fc" id="L132">		return ResponseEntity.ok(addFilmActor);</span>
+<span class="fc" id="L128">		return ResponseEntity.ok(addFilmActor);</span>
 	}
 
 	@PutMapping(&quot;/updateFilmActor&quot;)
 	public ResponseEntity&lt;FilmActor&gt; updateFilmActor(@RequestParam Integer id, Integer actor_id, Integer film_id){
-<span class="fc" id="L137">		FilmActor updateFilmActor = filmActorRepository.findById(id)</span>
-<span class="pc" id="L138">				.orElseThrow(() -&gt; new ResourceNotFoundException(errorMsg + id));</span>
+<span class="fc" id="L133">		FilmActor updateFilmActor = filmActorRepository.findById(id)</span>
+<span class="pc" id="L134">				.orElseThrow(() -&gt; new ResourceNotFoundException(errorMsg + id));</span>
 
-<span class="fc" id="L140">		updateFilmActor.setActor_id(actor_id);</span>
-<span class="fc" id="L141">		updateFilmActor.setFilm_id(film_id);</span>
+<span class="fc" id="L136">		updateFilmActor.setActor_id(actor_id);</span>
+<span class="fc" id="L137">		updateFilmActor.setFilm_id(film_id);</span>
 
-<span class="fc" id="L143">		filmActorRepository.save(updateFilmActor);</span>
+<span class="fc" id="L139">		filmActorRepository.save(updateFilmActor);</span>
 
-<span class="fc" id="L145">		return ResponseEntity.ok(updateFilmActor);</span>
+<span class="fc" id="L141">		return ResponseEntity.ok(updateFilmActor);</span>
 	}
 
 	@DeleteMapping(&quot;/deleteFilmActor&quot;)
 	public ResponseEntity&lt;HttpStatus&gt; deleteFilmActor(@RequestParam Integer actor_id){
 
-<span class="fc" id="L151">		FilmActor filmActor = filmActorRepository.findById(actor_id)</span>
-<span class="pc" id="L152">				.orElseThrow(() -&gt; new ResourceNotFoundException(errorMsg + actor_id));</span>
+<span class="fc" id="L147">		FilmActor filmActor = filmActorRepository.findById(actor_id)</span>
+<span class="pc" id="L148">				.orElseThrow(() -&gt; new ResourceNotFoundException(errorMsg + actor_id));</span>
 
-<span class="fc" id="L154">		filmActorRepository.delete(filmActor);</span>
+<span class="fc" id="L150">		filmActorRepository.delete(filmActor);</span>
 
-<span class="fc" id="L156">		return new ResponseEntity&lt;&gt;(HttpStatus.NO_CONTENT);</span>
+<span class="fc" id="L152">		return new ResponseEntity&lt;&gt;(HttpStatus.NO_CONTENT);</span>
 	}
 
 	 /* *
@@ -165,57 +161,57 @@ public class MyFirstMicroserviceApplication {
 	@GetMapping(&quot;/allFilms&quot;)
 	public @ResponseBody
 	Iterable&lt;Film&gt;getAllFilms(){
-<span class="fc" id="L168">		return filmRepository.findAll();</span>
+<span class="fc" id="L164">		return filmRepository.findAll();</span>
 	}
 
 	@GetMapping(&quot;/getFilm&quot;)
 	public ResponseEntity&lt;Film&gt; getFilm(@RequestParam Integer film_id){
-<span class="fc" id="L173">		Film film = filmRepository.findById(film_id)</span>
-<span class="pc" id="L174">				.orElseThrow(() -&gt; new ResourceNotFoundException(&quot;Actor does not exist with ID: &quot; + film_id));</span>
-<span class="fc" id="L175">		return ResponseEntity.ok(film);</span>
+<span class="fc" id="L169">		Film film = filmRepository.findById(film_id)</span>
+<span class="pc" id="L170">				.orElseThrow(() -&gt; new ResourceNotFoundException(&quot;Actor does not exist with ID: &quot; + film_id));</span>
+<span class="fc" id="L171">		return ResponseEntity.ok(film);</span>
 	}
 
 	@PostMapping(&quot;/addFilm&quot;)
 	public ResponseEntity&lt;Film&gt; addFilm(@RequestParam String title, String description, Integer release_year, String language_id, String original_language_id, Integer rental_duration, Integer rental_rate, Integer length, Integer replacement_cost, String rating, String special_features){
 
-<span class="fc" id="L181">		Film addFilm = new Film(title, description, release_year, language_id, original_language_id, rental_duration, rental_rate,length,replacement_cost,rating,special_features);</span>
-<span class="fc" id="L182">		filmRepository.save(addFilm);</span>
+<span class="fc" id="L177">		Film addFilm = new Film(title, description, release_year, language_id, original_language_id, rental_duration, rental_rate,length,replacement_cost,rating,special_features);</span>
+<span class="fc" id="L178">		filmRepository.save(addFilm);</span>
 
-<span class="fc" id="L184">		return ResponseEntity.ok(addFilm);</span>
+<span class="fc" id="L180">		return ResponseEntity.ok(addFilm);</span>
 	}
 
 	@PutMapping(&quot;/updateFilm&quot;)
 	public ResponseEntity&lt;Film&gt; updateFilm(@RequestParam Integer film_id, String title, String description, Integer release_year, String language_id, String original_language_id, Integer rental_duration, Integer rental_rate, Integer length, Integer replacement_cost, String rating, String special_features){
-<span class="fc" id="L189">		Film updateFilm = filmRepository.findById(film_id)</span>
-<span class="pc" id="L190">				.orElseThrow(() -&gt; new ResourceNotFoundException(&quot;Actor not exist with id: &quot; + film_id));</span>
+<span class="fc" id="L185">		Film updateFilm = filmRepository.findById(film_id)</span>
+<span class="pc" id="L186">				.orElseThrow(() -&gt; new ResourceNotFoundException(&quot;Actor not exist with id: &quot; + film_id));</span>
 
-<span class="fc" id="L192">		updateFilm.setFilm_id(film_id);</span>
-<span class="fc" id="L193">		updateFilm.setTitle(title);</span>
-<span class="fc" id="L194">		updateFilm.setDescription(description);</span>
-<span class="fc" id="L195">		updateFilm.setRelease_year(release_year);</span>
-<span class="fc" id="L196">		updateFilm.setLanguage_id(language_id);</span>
-<span class="fc" id="L197">		updateFilm.setOriginal_language_id(original_language_id);</span>
-<span class="fc" id="L198">		updateFilm.setRental_duration(rental_duration);</span>
-<span class="fc" id="L199">		updateFilm.setRental_rate(rental_rate);</span>
-<span class="fc" id="L200">		updateFilm.setLength(length);</span>
-<span class="fc" id="L201">		updateFilm.setReplacement_cost(replacement_cost);</span>
-<span class="fc" id="L202">		updateFilm.setRating(rating);</span>
-<span class="fc" id="L203">		updateFilm.setSpecial_features(special_features);</span>
+<span class="fc" id="L188">		updateFilm.setFilm_id(film_id);</span>
+<span class="fc" id="L189">		updateFilm.setTitle(title);</span>
+<span class="fc" id="L190">		updateFilm.setDescription(description);</span>
+<span class="fc" id="L191">		updateFilm.setRelease_year(release_year);</span>
+<span class="fc" id="L192">		updateFilm.setLanguage_id(language_id);</span>
+<span class="fc" id="L193">		updateFilm.setOriginal_language_id(original_language_id);</span>
+<span class="fc" id="L194">		updateFilm.setRental_duration(rental_duration);</span>
+<span class="fc" id="L195">		updateFilm.setRental_rate(rental_rate);</span>
+<span class="fc" id="L196">		updateFilm.setLength(length);</span>
+<span class="fc" id="L197">		updateFilm.setReplacement_cost(replacement_cost);</span>
+<span class="fc" id="L198">		updateFilm.setRating(rating);</span>
+<span class="fc" id="L199">		updateFilm.setSpecial_features(special_features);</span>
 
-<span class="fc" id="L205">		filmRepository.save(updateFilm);</span>
+<span class="fc" id="L201">		filmRepository.save(updateFilm);</span>
 
-<span class="fc" id="L207">		return ResponseEntity.ok(updateFilm);</span>
+<span class="fc" id="L203">		return ResponseEntity.ok(updateFilm);</span>
 	}
 
 	@DeleteMapping(&quot;/deleteFilm&quot;)
 	public ResponseEntity&lt;HttpStatus&gt; deleteFilm(@RequestParam Integer film_id){
 
-<span class="fc" id="L213">		Film film = filmRepository.findById(film_id)</span>
-<span class="pc" id="L214">				.orElseThrow(() -&gt; new ResourceNotFoundException(&quot;Actor not exist with id: &quot; + film_id));</span>
+<span class="fc" id="L209">		Film film = filmRepository.findById(film_id)</span>
+<span class="pc" id="L210">				.orElseThrow(() -&gt; new ResourceNotFoundException(&quot;Actor not exist with id: &quot; + film_id));</span>
 
-<span class="fc" id="L216">		filmRepository.delete(film);</span>
+<span class="fc" id="L212">		filmRepository.delete(film);</span>
 
-<span class="fc" id="L218">		return new ResponseEntity&lt;&gt;(HttpStatus.NO_CONTENT);</span>
+<span class="fc" id="L214">		return new ResponseEntity&lt;&gt;(HttpStatus.NO_CONTENT);</span>
 	}
 
 	/* *
@@ -227,47 +223,47 @@ public class MyFirstMicroserviceApplication {
 	@GetMapping(&quot;/allFilmCategory&quot;)
 	public @ResponseBody
 	Iterable&lt;FilmCategory&gt;getAllFilmCategory(){
-<span class="fc" id="L230">		return filmCategoryRepository.findAll();</span>
+<span class="fc" id="L226">		return filmCategoryRepository.findAll();</span>
 	}
 
 	@GetMapping(&quot;/getFilmCategory&quot;)
 	public ResponseEntity&lt;FilmCategory&gt; getFilmCategory(@RequestParam Integer film_id){
-<span class="fc" id="L235">		FilmCategory filmCategory = filmCategoryRepository.findById(film_id)</span>
-<span class="pc" id="L236">				.orElseThrow(() -&gt; new ResourceNotFoundException(&quot;Actor does not exist with ID: &quot; + film_id));</span>
-<span class="fc" id="L237">		return ResponseEntity.ok(filmCategory);</span>
+<span class="fc" id="L231">		FilmCategory filmCategory = filmCategoryRepository.findById(film_id)</span>
+<span class="pc" id="L232">				.orElseThrow(() -&gt; new ResourceNotFoundException(&quot;Actor does not exist with ID: &quot; + film_id));</span>
+<span class="fc" id="L233">		return ResponseEntity.ok(filmCategory);</span>
 	}
 
 	@PostMapping(&quot;/addFilmCategory&quot;)
 	public ResponseEntity&lt;FilmCategory&gt; addFilmCategory(@RequestParam Integer film_id, Integer categoryId){
 
-<span class="fc" id="L243">		FilmCategory addFilmCategory = new FilmCategory(film_id, categoryId);</span>
-<span class="fc" id="L244">		filmCategoryRepository.save(addFilmCategory);</span>
+<span class="fc" id="L239">		FilmCategory addFilmCategory = new FilmCategory(film_id, categoryId);</span>
+<span class="fc" id="L240">		filmCategoryRepository.save(addFilmCategory);</span>
 
-<span class="fc" id="L246">		return ResponseEntity.ok(addFilmCategory);</span>
+<span class="fc" id="L242">		return ResponseEntity.ok(addFilmCategory);</span>
 	}
 
 	@PutMapping(&quot;/updateFilmCategory&quot;)
 	public ResponseEntity&lt;FilmCategory&gt; updateFilmCategory(@RequestParam Integer film_id, Integer categoryId){
-<span class="fc" id="L251">		FilmCategory updateFilmCategory = filmCategoryRepository.findById(film_id)</span>
-<span class="pc" id="L252">				.orElseThrow(() -&gt; new ResourceNotFoundException(&quot;Actor not exist with id: &quot; + film_id));</span>
+<span class="fc" id="L247">		FilmCategory updateFilmCategory = filmCategoryRepository.findById(film_id)</span>
+<span class="pc" id="L248">				.orElseThrow(() -&gt; new ResourceNotFoundException(&quot;Actor not exist with id: &quot; + film_id));</span>
 
-<span class="fc" id="L254">		updateFilmCategory.setFilm_id(film_id);</span>
-<span class="fc" id="L255">		updateFilmCategory.setCategory_id(categoryId);</span>
+<span class="fc" id="L250">		updateFilmCategory.setFilm_id(film_id);</span>
+<span class="fc" id="L251">		updateFilmCategory.setCategory_id(categoryId);</span>
 
-<span class="fc" id="L257">		filmCategoryRepository.save(updateFilmCategory);</span>
+<span class="fc" id="L253">		filmCategoryRepository.save(updateFilmCategory);</span>
 
-<span class="fc" id="L259">		return ResponseEntity.ok(updateFilmCategory);</span>
+<span class="fc" id="L255">		return ResponseEntity.ok(updateFilmCategory);</span>
 	}
 
 	@DeleteMapping(&quot;/deleteFilmCategory&quot;)
 	public ResponseEntity&lt;HttpStatus&gt; deleteFilmCategory(@RequestParam Integer film_id){
 
-<span class="fc" id="L265">		FilmCategory filmCategory = filmCategoryRepository.findById(film_id)</span>
-<span class="pc" id="L266">				.orElseThrow(() -&gt; new ResourceNotFoundException(&quot;Actor not exist with id: &quot; + film_id));</span>
+<span class="fc" id="L261">		FilmCategory filmCategory = filmCategoryRepository.findById(film_id)</span>
+<span class="pc" id="L262">				.orElseThrow(() -&gt; new ResourceNotFoundException(&quot;Actor not exist with id: &quot; + film_id));</span>
 
-<span class="fc" id="L268">		filmCategoryRepository.delete(filmCategory);</span>
+<span class="fc" id="L264">		filmCategoryRepository.delete(filmCategory);</span>
 
-<span class="fc" id="L270">		return new ResponseEntity&lt;&gt;(HttpStatus.NO_CONTENT);</span>
+<span class="fc" id="L266">		return new ResponseEntity&lt;&gt;(HttpStatus.NO_CONTENT);</span>
 	}
 
 	 /* *
@@ -279,47 +275,47 @@ public class MyFirstMicroserviceApplication {
 	@GetMapping(&quot;/allCategory&quot;)
 	public @ResponseBody
 	Iterable&lt;Category&gt;getAllCategory(){
-<span class="fc" id="L282">		return categoryRepository.findAll();</span>
+<span class="fc" id="L278">		return categoryRepository.findAll();</span>
 	}
 
 	@GetMapping(&quot;/getCategory&quot;)
 	public ResponseEntity&lt;Category&gt; getCategory(@RequestParam Integer category_id){
-<span class="fc" id="L287">		Category category = categoryRepository.findById(category_id)</span>
-<span class="pc" id="L288">				.orElseThrow(() -&gt; new ResourceNotFoundException(&quot;Actor does not exist with ID: &quot; + category_id));</span>
-<span class="fc" id="L289">		return ResponseEntity.ok(category);</span>
+<span class="fc" id="L283">		Category category = categoryRepository.findById(category_id)</span>
+<span class="pc" id="L284">				.orElseThrow(() -&gt; new ResourceNotFoundException(&quot;Actor does not exist with ID: &quot; + category_id));</span>
+<span class="fc" id="L285">		return ResponseEntity.ok(category);</span>
 	}
 
 	@PostMapping(&quot;/addCategory&quot;)
 	public ResponseEntity&lt;Category&gt; addCategory(@RequestParam String name){
 
-<span class="fc" id="L295">		Category addCategory = new Category(name);</span>
-<span class="fc" id="L296">		categoryRepository.save(addCategory);</span>
+<span class="fc" id="L291">		Category addCategory = new Category(name);</span>
+<span class="fc" id="L292">		categoryRepository.save(addCategory);</span>
 
-<span class="fc" id="L298">		return ResponseEntity.ok(addCategory);</span>
+<span class="fc" id="L294">		return ResponseEntity.ok(addCategory);</span>
 	}
 
 	@PutMapping(&quot;/updateCategory&quot;)
 	public ResponseEntity&lt;Category&gt; updateCategory(@RequestParam Integer categoryId, String name){
-<span class="fc" id="L303">		Category updateCategory = categoryRepository.findById(categoryId)</span>
-<span class="pc" id="L304">				.orElseThrow(() -&gt; new ResourceNotFoundException(&quot;Actor not exist with id: &quot; + categoryId));</span>
+<span class="fc" id="L299">		Category updateCategory = categoryRepository.findById(categoryId)</span>
+<span class="pc" id="L300">				.orElseThrow(() -&gt; new ResourceNotFoundException(&quot;Actor not exist with id: &quot; + categoryId));</span>
 
-<span class="fc" id="L306">		updateCategory.setCategory_id(categoryId);</span>
-<span class="fc" id="L307">		updateCategory.setName(name);</span>
+<span class="fc" id="L302">		updateCategory.setCategory_id(categoryId);</span>
+<span class="fc" id="L303">		updateCategory.setName(name);</span>
 
-<span class="fc" id="L309">		categoryRepository.save(updateCategory);</span>
+<span class="fc" id="L305">		categoryRepository.save(updateCategory);</span>
 
-<span class="fc" id="L311">		return ResponseEntity.ok(updateCategory);</span>
+<span class="fc" id="L307">		return ResponseEntity.ok(updateCategory);</span>
 	}
 
 	@DeleteMapping(&quot;/deleteCategory&quot;)
 	public ResponseEntity&lt;HttpStatus&gt; deleteCategory(@RequestParam Integer category_id){
 
-<span class="fc" id="L317">		Category category = categoryRepository.findById(category_id)</span>
-<span class="pc" id="L318">				.orElseThrow(() -&gt; new ResourceNotFoundException(&quot;Actor not exist with id: &quot; + category_id));</span>
+<span class="fc" id="L313">		Category category = categoryRepository.findById(category_id)</span>
+<span class="pc" id="L314">				.orElseThrow(() -&gt; new ResourceNotFoundException(&quot;Actor not exist with id: &quot; + category_id));</span>
 
-<span class="fc" id="L320">		categoryRepository.delete(category);</span>
+<span class="fc" id="L316">		categoryRepository.delete(category);</span>
 
-<span class="fc" id="L322">		return new ResponseEntity&lt;&gt;(HttpStatus.NO_CONTENT);</span>
+<span class="fc" id="L318">		return new ResponseEntity&lt;&gt;(HttpStatus.NO_CONTENT);</span>
 	}
 
 	 /* *
@@ -331,47 +327,47 @@ public class MyFirstMicroserviceApplication {
 	@GetMapping(&quot;/allLanguage&quot;)
 	public @ResponseBody
 	Iterable&lt;Language&gt;getAllLanguages(){
-<span class="fc" id="L334">		return languageRepository.findAll();</span>
+<span class="fc" id="L330">		return languageRepository.findAll();</span>
 	}
 
 	@GetMapping(&quot;/getLanguage&quot;)
 	public ResponseEntity&lt;Language&gt; getLanguage(@RequestParam Integer language_id){
-<span class="fc" id="L339">		Language language = languageRepository.findById(language_id)</span>
-<span class="pc" id="L340">				.orElseThrow(() -&gt; new ResourceNotFoundException(&quot;Actor does not exist with ID: &quot; + language_id));</span>
-<span class="fc" id="L341">		return ResponseEntity.ok(language);</span>
+<span class="fc" id="L335">		Language language = languageRepository.findById(language_id)</span>
+<span class="pc" id="L336">				.orElseThrow(() -&gt; new ResourceNotFoundException(&quot;Actor does not exist with ID: &quot; + language_id));</span>
+<span class="fc" id="L337">		return ResponseEntity.ok(language);</span>
 	}
 
 	@PostMapping(&quot;/addLanguage&quot;)
 	public ResponseEntity&lt;Language&gt; addLanguage(@RequestParam String name){
 
-<span class="fc" id="L347">		Language addLanguage = new Language(name);</span>
-<span class="fc" id="L348">		languageRepository.save(addLanguage);</span>
+<span class="fc" id="L343">		Language addLanguage = new Language(name);</span>
+<span class="fc" id="L344">		languageRepository.save(addLanguage);</span>
 
-<span class="fc" id="L350">		return ResponseEntity.ok(addLanguage);</span>
+<span class="fc" id="L346">		return ResponseEntity.ok(addLanguage);</span>
 	}
 
 	@PutMapping(&quot;/updateLanguage&quot;)
 	public ResponseEntity&lt;Language&gt; updateLanguage(@RequestParam Integer language_id, String name){
-<span class="fc" id="L355">		Language updateLanguage = languageRepository.findById(language_id)</span>
-<span class="pc" id="L356">				.orElseThrow(() -&gt; new ResourceNotFoundException(&quot;Actor not exist with id: &quot; + language_id));</span>
+<span class="fc" id="L351">		Language updateLanguage = languageRepository.findById(language_id)</span>
+<span class="pc" id="L352">				.orElseThrow(() -&gt; new ResourceNotFoundException(&quot;Actor not exist with id: &quot; + language_id));</span>
 
-<span class="fc" id="L358">		updateLanguage.setLanguage_id(language_id);</span>
-<span class="fc" id="L359">		updateLanguage.setName(name);</span>
+<span class="fc" id="L354">		updateLanguage.setLanguage_id(language_id);</span>
+<span class="fc" id="L355">		updateLanguage.setName(name);</span>
 
-<span class="fc" id="L361">		languageRepository.save(updateLanguage);</span>
+<span class="fc" id="L357">		languageRepository.save(updateLanguage);</span>
 
-<span class="fc" id="L363">		return ResponseEntity.ok(updateLanguage);</span>
+<span class="fc" id="L359">		return ResponseEntity.ok(updateLanguage);</span>
 	}
 
 	@DeleteMapping(&quot;/deleteLanguage&quot;)
 	public ResponseEntity&lt;HttpStatus&gt; deleteLanguage(@RequestParam Integer language_id){
 
-<span class="fc" id="L369">		Language language = languageRepository.findById(language_id)</span>
-<span class="pc" id="L370">				.orElseThrow(() -&gt; new ResourceNotFoundException(&quot;Actor not exist with id: &quot; + language_id));</span>
+<span class="fc" id="L365">		Language language = languageRepository.findById(language_id)</span>
+<span class="pc" id="L366">				.orElseThrow(() -&gt; new ResourceNotFoundException(&quot;Actor not exist with id: &quot; + language_id));</span>
 
-<span class="fc" id="L372">		languageRepository.delete(language);</span>
+<span class="fc" id="L368">		languageRepository.delete(language);</span>
 
-<span class="fc" id="L374">		return new ResponseEntity&lt;&gt;(HttpStatus.NO_CONTENT);</span>
+<span class="fc" id="L370">		return new ResponseEntity&lt;&gt;(HttpStatus.NO_CONTENT);</span>
 	}
 
 	/* *

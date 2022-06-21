@@ -10,15 +10,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDateTime;
-
 @SpringBootApplication
 @RestController
 @RequestMapping("/Home")
 @CrossOrigin(origins = "*")
 public class MyFirstMicroserviceApplication {
-
-	String unNeeded;
 
 	@Autowired
 	private ActorRepository actorRepository;

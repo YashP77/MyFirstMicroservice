@@ -47,8 +47,8 @@ public class updateActorStepDef {
     @Given("I have the actor information and id number of the actor I would like to change")
     public void i_have_the_actor_information_and_id_number_of_the_actor_i_would_like_to_change() {
         // Write code here that turns the phrase above into concrete actions
-        testActor1 = new Actor(1,"TestUpdate", "TestUpdate");
-        testActor2 = new Actor(1,"TestUpdated", "TestUpdated");
+        testActor1 = new Actor("TestUpdate", "TestUpdate");
+        testActor2 = new Actor("TestUpdated", "TestUpdated");
     }
 
     @When("I input the data into the database for update")

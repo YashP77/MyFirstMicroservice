@@ -19,7 +19,6 @@ public class seleniumTest {
     public static void setup() {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
-        driver.manage().timeouts().implicitlyWait(Duration.ofMillis(500));
     }
 
     @AfterAll
@@ -32,6 +31,7 @@ public class seleniumTest {
     void checkWebsiteConnection() {
         Assertions.assertDoesNotThrow(() -> {
             driver.get("http://localhost:3000/");
+            driver.manage().timeouts().implicitlyWait(Duration.ofMillis(500));
         });
     }
 }

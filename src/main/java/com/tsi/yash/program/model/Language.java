@@ -1,6 +1,10 @@
 package com.tsi.yash.program.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name="language")
@@ -9,13 +13,12 @@ public class Language {
     // Attributes
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     private Integer language_id;
     private String name;
 
+
     //Constructor
     public Language(){
-
     }
 
     public Language(String name){
@@ -23,8 +26,6 @@ public class Language {
     }
 
     //Methods
-
-
     public Integer getLanguage_id() {
         return language_id;
     }
@@ -39,14 +40,5 @@ public class Language {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-
-    @Override
-    public String toString() {
-        return "Language{" +
-                "language_id=" + language_id +
-                ", name='" + name + '\'' +
-                '}';
     }
 }

@@ -13,7 +13,7 @@ public class ActorTest {
 
     @BeforeEach
     public void setUp(){
-        actor = new Actor(1, "Test", "Actor");
+        actor = new Actor("Test", "Actor");
 
     }
 
@@ -30,6 +30,7 @@ public class ActorTest {
 
     @Test
     public void testGetActor_id() {
+        actor.setActor_id(1);
         assertEquals(1, actor.getActor_id(), "ID is not retrieved correctly");
     }
 
