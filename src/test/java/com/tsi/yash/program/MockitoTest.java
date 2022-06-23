@@ -46,7 +46,7 @@ public class MockitoTest {
      * */
 
     @Test
-    public void getAllActors(){
+    void getAllActors(){
 
         myFirstMicroserviceApplication.getAllActors();
         verify(actorRepository).findAll();
@@ -54,7 +54,7 @@ public class MockitoTest {
     }
 
     @Test
-    public void getActor(){
+    void getActor(){
 
         Actor testActor = new Actor("TestAdd","TestAdd");
 
@@ -67,7 +67,7 @@ public class MockitoTest {
     }
 
     @Test
-    public void testAddActor(){
+     void testAddActor(){
 
         Actor testActor = new Actor("TestAdd", "TestAdd");
 
@@ -85,7 +85,7 @@ public class MockitoTest {
 
 
     @Test
-    public void testUpdateActor(){
+     void testUpdateActor(){
 
         Actor testActor1 = new Actor("TestUpdate", "TestUpdate");
 
@@ -106,7 +106,7 @@ public class MockitoTest {
     }
 
     @Test
-    public void testDeleteActor(){
+     void testDeleteActor(){
 
         Actor testActor = new Actor("TestAdd", "TestAdd");
 
@@ -123,7 +123,7 @@ public class MockitoTest {
      * */
 
     @Test
-    public void getAllFilmActors(){
+     void getAllFilmActors(){
 
         myFirstMicroserviceApplication.getAllFilmActors();
         verify(filmActorRepository).findAll();
@@ -131,7 +131,7 @@ public class MockitoTest {
     }
 
     @Test
-    public void getFilmActor(){
+     void getFilmActor(){
 
         FilmActor testFilmActor = new FilmActor(1,1);
 
@@ -144,7 +144,7 @@ public class MockitoTest {
     }
 
     @Test
-    public void testAddFilmActor(){
+     void testAddFilmActor(){
 
         FilmActor testFilmActor = new FilmActor(1,1);
 
@@ -162,7 +162,7 @@ public class MockitoTest {
 
 
     @Test
-    public void testUpdateFilmActor(){
+     void testUpdateFilmActor(){
 
         FilmActor testFilmActor1 = new FilmActor(1,1);
 
@@ -183,7 +183,7 @@ public class MockitoTest {
     }
 
     @Test
-    public void testDeleteFilmActor(){
+     void testDeleteFilmActor(){
 
         FilmActor testFilmActor = new FilmActor(1 ,1);
 
@@ -200,7 +200,7 @@ public class MockitoTest {
      * */
 
     @Test
-    public void getAllFilms(){
+     void getAllFilms(){
 
         myFirstMicroserviceApplication.getAllFilms();
         verify(filmRepository).findAll();
@@ -208,7 +208,7 @@ public class MockitoTest {
     }
 
     @Test
-    public void getFilm(){
+     void getFilm(){
 
         Film testFilm = new Film("title", "description", 2022, "language_id", "original_language_id", 2, 3,180,10,"rating","special_features");
 
@@ -222,7 +222,7 @@ public class MockitoTest {
     }
 
     @Test
-    public void testAddFilm(){
+     void testAddFilm(){
 
         Film testFilm = new Film("title", "description", 2022, "language_id", "original_language_id", 2, 3,180,10,"rating","special_features");
 
@@ -240,7 +240,7 @@ public class MockitoTest {
 
 
     @Test
-    public void testUpdateFilm(){
+     void testUpdateFilm(){
 
         Film testFilm1 = new Film("title", "description", 2022, "language_id", "original_language_id", 2, 3,180,10,"rating","special_features");
 
@@ -261,7 +261,7 @@ public class MockitoTest {
     }
 
     @Test
-    public void testDeleteFilm(){
+     void testDeleteFilm(){
 
         Film testFilm = new Film("title", "description", 2022, "language_id", "original_language_id", 2, 3,180,10,"rating","special_features");
 
@@ -281,7 +281,7 @@ public class MockitoTest {
 
 
     @Test
-    public void getAllFilmCategory(){
+     void getAllFilmCategory(){
 
         myFirstMicroserviceApplication.getAllFilmCategory();
         verify(filmCategoryRepository).findAll();
@@ -289,7 +289,7 @@ public class MockitoTest {
     }
 
     @Test
-    public void getFilmCategory(){
+     void getFilmCategory(){
 
         FilmCategory testFilmCategory = new FilmCategory(1,1);
 
@@ -302,7 +302,7 @@ public class MockitoTest {
     }
 
     @Test
-    public void testAddFilmCategory(){
+     void testAddFilmCategory(){
 
         FilmCategory testFilmCategory = new FilmCategory(1,1);
 
@@ -320,7 +320,7 @@ public class MockitoTest {
 
 
     @Test
-    public void testUpdateFilmCategory(){
+     void testUpdateFilmCategory(){
 
         FilmCategory testFilmCategory1 = new FilmCategory(1,1);
 
@@ -341,7 +341,7 @@ public class MockitoTest {
     }
 
     @Test
-    public void testDeleteFilmCategory(){
+     void testDeleteFilmCategory(){
 
         FilmCategory testFilmCategory = new FilmCategory(1 ,1);
 
@@ -359,7 +359,7 @@ public class MockitoTest {
      * */
 
     @Test
-    public void getAllCategory(){
+     void getAllCategory(){
 
         myFirstMicroserviceApplication.getAllCategory();
         verify(categoryRepository).findAll();
@@ -367,7 +367,7 @@ public class MockitoTest {
     }
 
     @Test
-    public void getCategory(){
+     void getCategory(){
 
         Category testCategory = new Category("Test category");
 
@@ -380,7 +380,7 @@ public class MockitoTest {
     }
 
     @Test
-    public void testAddCategory(){
+     void testAddCategory(){
 
         Category testCategory = new Category("Test category");
 
@@ -398,7 +398,7 @@ public class MockitoTest {
 
 
     @Test
-    public void testUpdateCategory(){
+     void testUpdateCategory(){
 
         Category testCategory1 = new Category("TestUpdate");
 
@@ -419,7 +419,7 @@ public class MockitoTest {
     }
 
     @Test
-    public void testDeleteCategory(){
+     void testDeleteCategory(){
 
         Category testCategory = new Category("Testdelete");
 
@@ -438,7 +438,7 @@ public class MockitoTest {
 
 
     @Test
-    public void getAllLanguage(){
+     void getAllLanguage(){
 
         myFirstMicroserviceApplication.getAllLanguages();
         verify(languageRepository).findAll();
@@ -446,7 +446,7 @@ public class MockitoTest {
     }
 
     @Test
-    public void getLanguage(){
+     void getLanguage(){
 
         Language testLanguage = new Language("Test category");
 
@@ -459,7 +459,7 @@ public class MockitoTest {
     }
 
     @Test
-    public void testAddLanguage(){
+     void testAddLanguage(){
 
         Language testLanguage = new Language("Test category");
 
@@ -477,7 +477,7 @@ public class MockitoTest {
 
 
     @Test
-    public void testUpdateLanguage(){
+     void testUpdateLanguage(){
 
         Language testLanguage1 = new Language("TestUpdate");
 
@@ -498,7 +498,7 @@ public class MockitoTest {
     }
 
     @Test
-    public void testDeleteLanguage(){
+     void testDeleteLanguage(){
 
         Language testLanguage = new Language("Test delete");
 

@@ -1,9 +1,9 @@
 GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
-myFirstMicroservice,com.tsi.yash.program.model,FilmCategory,3,23,0,0,2,10,1,5,1,5
-myFirstMicroservice,com.tsi.yash.program.model,FilmActor,3,23,0,0,2,10,1,5,1,5
-myFirstMicroservice,com.tsi.yash.program.model,Film,27,130,0,0,8,51,5,25,5,25
-myFirstMicroservice,com.tsi.yash.program.model,Language,3,20,0,0,2,9,1,5,1,5
-myFirstMicroservice,com.tsi.yash.program.model,Actor,24,43,0,0,8,16,3,8,3,8
-myFirstMicroservice,com.tsi.yash.program.model,Category,15,25,0,0,5,10,3,5,3,5
+myFirstMicroservice,com.tsi.yash.program.model,FilmCategory,0,26,0,0,0,12,0,6,0,6
+myFirstMicroservice,com.tsi.yash.program.model,FilmActor,0,26,0,0,0,12,0,6,0,6
+myFirstMicroservice,com.tsi.yash.program.model,Film,0,157,0,0,0,59,0,30,0,30
+myFirstMicroservice,com.tsi.yash.program.model,Language,0,23,0,0,0,11,0,6,0,6
+myFirstMicroservice,com.tsi.yash.program.model,Actor,0,67,0,0,0,24,0,11,0,11
+myFirstMicroservice,com.tsi.yash.program.model,Category,0,40,0,0,0,15,0,8,0,8
 myFirstMicroservice,com.tsi.yash.program,MyFirstMicroserviceApplication,125,494,0,0,2,121,19,31,19,31
 myFirstMicroservice,com.tsi.yash.program.exception,ResourceNotFoundException,4,0,0,0,2,0,1,0,1,0

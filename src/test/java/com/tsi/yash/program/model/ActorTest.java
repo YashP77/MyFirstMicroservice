@@ -1,9 +1,11 @@
 package com.tsi.yash.program.model;
 
-import com.tsi.yash.program.MyFirstMicroserviceApplication;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import java.util.HashSet;
+import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -22,9 +24,12 @@ public class ActorTest {
 
         Actor actor1 = new Actor();
         Actor actor2 = new Actor("Test", "Con");
+        Set<Film> film = new HashSet<>();
+        Actor actor3 = new Actor("Test", "Con", film);
 
-        assertEquals(null, actor1.getFirst_name(), "Constructor not functioning");
+        assertNull(actor1.getFirst_name(), "Constructor not functioning");
         assertEquals("Test", actor2.getFirst_name(), "Constructor not functioning");
+        assertEquals("Test", actor3.getFirst_name(), "Constructor not functioning");
 
     }
 
@@ -62,5 +67,14 @@ public class ActorTest {
     public void setLast_name() {
         actor.setLast_name("Actor2");
         assertEquals("Actor2", actor.getLast_name(), "Last name is not set correctly");
+    }
+
+    @Test
+    public void getFilm(){
+        Set<Film> film = new HashSet<>();
+        actor.setFilm(film);
+
+        assertEquals(film, actor.getFilm(), "Film is not retrieved correctly");
+
     }
 }

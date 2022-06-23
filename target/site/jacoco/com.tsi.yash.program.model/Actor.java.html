@@ -16,7 +16,7 @@ public class Actor{
     @Basic private String first_name;
     @Basic private String last_name;
 
-<span class="pc" id="L19">    @ManyToMany(mappedBy = &quot;actor&quot;,fetch = FetchType.LAZY)</span>
+<span class="fc" id="L19">    @ManyToMany(mappedBy = &quot;actor&quot;,fetch = FetchType.LAZY)</span>
     @JsonIgnore
     private Set&lt;Film&gt; film = new HashSet&lt;&gt;();
 
@@ -30,11 +30,11 @@ public class Actor{
 <span class="fc" id="L30">        this.last_name = last_name;</span>
 <span class="fc" id="L31">    }</span>
 
-<span class="nc" id="L33">    public Actor(String first_name, String last_name, Set&lt;Film&gt; film_id){</span>
-<span class="nc" id="L34">        this.first_name = first_name;</span>
-<span class="nc" id="L35">        this.last_name = last_name;</span>
-<span class="nc" id="L36">        this.film = film_id;</span>
-<span class="nc" id="L37">    }</span>
+<span class="fc" id="L33">    public Actor(String first_name, String last_name, Set&lt;Film&gt; film_id){</span>
+<span class="fc" id="L34">        this.first_name = first_name;</span>
+<span class="fc" id="L35">        this.last_name = last_name;</span>
+<span class="fc" id="L36">        this.film = film_id;</span>
+<span class="fc" id="L37">    }</span>
 
     //Methods
     public int getActor_id() {
@@ -62,11 +62,11 @@ public class Actor{
 <span class="fc" id="L62">    }</span>
 
     public Set&lt;Film&gt; getFilm() {
-<span class="nc" id="L65">        return film;</span>
+<span class="fc" id="L65">        return film;</span>
     }
 
     public void setFilm(Set&lt;Film&gt; film) {
-<span class="nc" id="L69">        this.film = film;</span>
-<span class="nc" id="L70">    }</span>
+<span class="fc" id="L69">        this.film = film;</span>
+<span class="fc" id="L70">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

@@ -18,15 +18,15 @@ public class Category {
     private Integer category_id;
     private String name;
 
-<span class="pc" id="L21">    @ManyToMany (mappedBy = &quot;category&quot;, fetch = FetchType.LAZY)</span>
+<span class="fc" id="L21">    @ManyToMany (mappedBy = &quot;category&quot;, fetch = FetchType.LAZY)</span>
     @JsonIgnore
     private Set&lt;Film&gt; films = new HashSet&lt;&gt;();
 
 
     // Constructor
-<span class="nc" id="L27">    public Category(){</span>
+<span class="fc" id="L27">    public Category(){</span>
 
-<span class="nc" id="L29">    }</span>
+<span class="fc" id="L29">    }</span>
 
 <span class="fc" id="L31">    public Category(String name){</span>
 <span class="fc" id="L32">        this.name=name;</span>
@@ -51,11 +51,11 @@ public class Category {
 <span class="fc" id="L51">    }</span>
 
     public Set&lt;Film&gt; getFilms() {
-<span class="nc" id="L54">        return films;</span>
+<span class="fc" id="L54">        return films;</span>
     }
 
     public void setFilms(Set&lt;Film&gt; films) {
-<span class="nc" id="L58">        this.films = films;</span>
-<span class="nc" id="L59">    }</span>
+<span class="fc" id="L58">        this.films = films;</span>
+<span class="fc" id="L59">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

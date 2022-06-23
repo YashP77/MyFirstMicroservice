@@ -4,14 +4,17 @@ runCucumberTest.class
 com\tsi\yash\program\seleniumTest.class
 com\tsi\yash\program\CucumberStepDefs\filmStepDefs\deleteFilmStepDef.class
 com\tsi\yash\program\CucumberStepDefs\addActorPageStepDef.class
+com\tsi\yash\program\model\FilmTest.class
 com\tsi\yash\program\MyFirstMicroserviceApplicationTests.class
 com\tsi\yash\program\CucumberStepDefs\actorSearchStepDef.class
+com\tsi\yash\program\model\ConstructorTests.class
 com\tsi\yash\program\CucumberStepDefs\navigatingPageStepDef.class
 com\tsi\yash\program\model\ActorTest.class
 com\tsi\yash\program\CucumberStepDefs\filmStepDefs\addFilmStepDef.class
 com\tsi\yash\program\CucumberStepDefs\filmStepDefs\updateFilmStepDef.class
 com\tsi\yash\program\CucumberStepDefs\actorStepDefs\addActorStepDef.class
 com\tsi\yash\program\CucumberStepDefs\filmStepDefs\viewFilmStepDef.class
+com\tsi\yash\program\model\CategoryTest.class
 com\tsi\yash\program\CucumberStepDefs\actorStepDefs\deleteActorStepDef.class
 com\tsi\yash\program\CucumberStepDefs\actorStepDefs\viewActorStepDef.class
 com\tsi\yash\program\CucumberStepDefs\actorStepDefs\updateActorStepDef.class
