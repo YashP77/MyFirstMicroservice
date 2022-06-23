@@ -3,20 +3,22 @@ package com.tsi.yash.program.model;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
-public class ConstructorTests {
+class ConstructorTests {
 
     @Test
-    public void constructorTest(){
+    void constructorTest(){
 
         Film  film = new Film();
         Language language = new Language();
         FilmActor filmActor= new FilmActor();
         FilmCategory filmCategory = new FilmCategory();
 
-        assertEquals(film, film, "Film not constructed correctly");
-        assertEquals(language, language, "Language not constructed correctly");
-        assertEquals(filmActor, filmActor, "FilmActor not constructed correctly");
-        assertEquals(filmCategory, filmCategory, "FilmCategory not constructed correctly");
+
+        assertNull(film.getTitle(), "Film not constructed correctly");
+        assertNull(language.getName(), "Language not constructed correctly");
+        assertNull(filmActor.getActor_id(), "FilmActor not constructed correctly");
+        assertNull(filmCategory.getFilm_id(), "FilmCategory not constructed correctly");
     }
 }

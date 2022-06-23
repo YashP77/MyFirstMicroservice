@@ -9,7 +9,7 @@ import java.util.Set;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
-public class CategoryTest {
+class CategoryTest {
 
     private Category category;
 
@@ -19,15 +19,15 @@ public class CategoryTest {
     }
 
     @Test
-    public void constructorTest(){
+    void constructorTest(){
 
         Category category1 = new Category();
 
-        assertEquals(category1, category1, "Category not constructed correctly");
+        assertNull(category1.getName(), "Category not constructed correctly");
     }
 
     @Test
-    public void getFilm(){
+    void getFilm(){
         Set<Film> film = new HashSet<>();
         category.setFilms(film);
 

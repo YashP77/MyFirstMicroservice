@@ -70,7 +70,7 @@ public class ActorTest {
     }
 
     @Test
-    public void getFilm(){
+    void getFilm(){
         Set<Film> film = new HashSet<>();
         actor.setFilm(film);
 

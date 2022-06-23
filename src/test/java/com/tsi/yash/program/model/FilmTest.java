@@ -7,10 +7,10 @@ import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class FilmTest {
+class FilmTest {
 
     @Test
-    public void getActor(){
+    void getActor(){
 
         Film film = new Film();
 
@@ -21,7 +21,7 @@ public class FilmTest {
     }
 
     @Test
-    public void getCategory(){
+    void getCategory(){
 
         Film film = new Film();
 
