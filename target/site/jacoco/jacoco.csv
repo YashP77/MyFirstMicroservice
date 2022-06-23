@@ -5,5 +5,5 @@ myFirstMicroservice,com.tsi.yash.program.model,Film,27,130,0,0,8,51,5,25,5,25
 myFirstMicroservice,com.tsi.yash.program.model,Language,3,20,0,0,2,9,1,5,1,5
 myFirstMicroservice,com.tsi.yash.program.model,Actor,24,43,0,0,8,16,3,8,3,8
 myFirstMicroservice,com.tsi.yash.program.model,Category,15,25,0,0,5,10,3,5,3,5
-myFirstMicroservice,com.tsi.yash.program,MyFirstMicroserviceApplication,125,497,0,0,2,122,19,31,19,31
+myFirstMicroservice,com.tsi.yash.program,MyFirstMicroserviceApplication,125,494,0,0,2,121,19,31,19,31
 myFirstMicroservice,com.tsi.yash.program.exception,ResourceNotFoundException,4,0,0,0,2,0,1,0,1,0

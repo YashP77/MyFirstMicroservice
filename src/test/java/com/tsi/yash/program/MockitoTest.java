@@ -506,6 +506,4 @@ public class MockitoTest {
         myFirstMicroserviceApplication.deleteLanguage(testLanguage.getLanguage_id());
         verify(languageRepository).delete(testLanguage);
     }
-
-
 }

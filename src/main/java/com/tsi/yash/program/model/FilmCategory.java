@@ -8,7 +8,6 @@ public class FilmCategory {
     // Attributes
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     private Integer film_id;
     private Integer category_id;
 

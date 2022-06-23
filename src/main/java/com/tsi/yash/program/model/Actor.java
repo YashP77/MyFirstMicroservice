@@ -2,13 +2,12 @@ package com.tsi.yash.program.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
 @Table(name="actor")
-public class Actor implements Serializable {
+public class Actor{
 
     // Attributes
     @Id

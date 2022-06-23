@@ -29,8 +29,6 @@ public class MyFirstMicroserviceApplication {
 	@Autowired
 	private LanguageRepository languageRepository;
 
-	private String saved = "Saved";
-
 	public static void main(String[] args) {
 
 		SpringApplication.run(MyFirstMicroserviceApplication.class, args);
